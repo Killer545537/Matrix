@@ -1,0 +1,202 @@
+\input{C.tex}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\title{Matrix Multiplication}
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+			\huge Project Work \vfil
+			Matrices and their Operations in Python\\
+			
+		\end{center}
+	\end{titlepage}
+	\tableofcontents
+	\newpage
+	
+	\begin{abstract}
+		Matrices are a part of Linear Algebra which is used everywhere in Computer Science. It is used in computer graphics to create 2D/3D models, animations, etc. It is used in cryptography (making data secure) by using matrices to store data and a key matrix to encrypt it and its inverse to decrypt it. In this project we will look at operations on matrices in Python.
+	\end{abstract}
+	\section{What is a Matrix?}
+	A matrix is a rectangular array of data\footnote{Data may be of any form, like numbers, expressions or alphabets.} arranged in rows and columns.\\
+	A matrix looks like the following:
+	\[A=\begin{bmatrix}
+		1 & 10 & 12 \\
+		2&20& 22
+	\end{bmatrix}_{2\times 3}\]
+	A matrix is represented by capital letters and the subscript represents $\text{Number of rows}\times \text{Number of columns}$ and the matrix $A$ is called \emph{a 2 by 3 matrix}.\\
+	In Python, to enter a matrix, we use nested lists like: 
+	\begin{lstlisting}[language=Python]
+Matrix=[
+	[1,10,12],
+	[2,10,22]
+]\end{lstlisting}
+	\subsection{Accessing a Matrix}
+	A matrix a is generally written as $A=[a_{ij}]_{m\times n}$ where $1\leq i\leq m \land 1\leq j \leq n$. Thus, if we know the location of an element say, \emph{element in row 2 and column 1}, we can write it as $a_{21}$.
+	In Python as well, if we need to find the \emph{element in row i and column j}, we can return it as:
+	\begin{lstlisting}[language=Python]
+def find_element(matrix, row, column):
+	row_index=row-1 #we need to use row-1 as indexes begin from 0
+	column_index=column-1
+	return matrix[row_index][column_index] \end{lstlisting}	
+	\begin{eg}
+		We can also access the elements of a matrix, either row or column wise.
+	\end{eg}
+	\begin{explanation}
+		To print the matrix row-wise:
+		\begin{lstlisting}[language=Python]
+def row_wise(matrix):
+	for i in range(len(matrix)):
+		for j in range(len(matrix[0])):
+			print(matrix[i][j],end="\t")
+	print("\n") \end{lstlisting}
+	If matrix is $A=\begin{bmatrix}
+		1 & 10 & 12 \\
+		2&20& 22
+	\end{bmatrix}$, then, the output is,
+	\begin{verbatim}
+1       10      12
+
+2       20      22
+	\end{verbatim}
+		To print the matrix column-wise:
+	\begin{lstlisting}[language=Python]
+def column_wise(matrix):
+	for i in range(len(matrix[0])):
+		for j in range(len(matrix)):
+			print(matrix[j][i],end="\t")
+	print("\n") \end{lstlisting}
+	The output in this case is:
+	\begin{verbatim}
+		1       2
+		
+		10      20
+		
+		12      22
+	\end{verbatim}
+	\end{explanation}
+	\subsection{Null Matrix}
+	A null matrix is one such that,
+	\[a_{ij}=0 \quad \forall \ i,j\]
+	Such a matrix is represented by $O$.
+	\begin{eg}
+		Creating a null matrix of a given order.
+	\end{eg}
+	\begin{explanation} \phantom \\
+		\begin{lstlisting}[language=Python]
+def null(rows,columns):
+	null_matrix=[[0 for i in range(columns)] for i in range(rows)] #loop over columns then over rows
+	return null_matrix \end{lstlisting}
+	\end{explanation}
+
+	\subsection{Upper and Lower Triangular Matrices}
+	The upper triangular matrix is a matrix in which all the entries below the diagonal are zero, i.e.,
+	\[a_{ij}=0\quad \forall \ i\geq j\]
+	Or,
+	\[A=\begin{bmatrix}
+		a_{11} & a_{12} & \dots & a_{1n}\\
+		0 & a_{22} & \dots & a_{2n}\\
+		\vdots & \vdots & \ddots & \vdots \\
+		0& 0& \cdots & a_{nn}
+	\end{bmatrix}\]
+	The lower triangular matrix is a matrix in which all the entries above the diagonal are zero\footnote{These definitions are open for discussion. Some authors claim that the matrix must be square, while some do not restrict the matrix. Even though a 'triangle' would not be formed in the case of rectangular matrices, it is acceptable. We have chosen not to restrict the matrices to only square matrices.}, i.e.,
+	\[a_{ij}=0\quad \forall \ i\leq j\]
+	Or,
+	\[A=\begin{bmatrix}
+		a_{11}& 0 & \dots & 0\\
+		a_{21}& a_{22} & \dots & 0\\
+		\vdots & \vdots & \ddots & 0\\
+		a_{n1}& a_{n2}& \dots & a_{nn}
+	\end{bmatrix}\]
+	\begin{eg}
+		Creating an upper and lower triangular matrix.
+	\end{eg}
+	\begin{explanation}
+		First for an upper triangular matrix,
+		\begin{lstlisting}[language=Python]
+def upper_triangular(matrix):
+    rows=len(matrix)
+    columns=len(matrix[0])
+    upper_matrix=null(rows,columns) #null matrix
+    for i in range(rows):
+        for j in range(columns):
+            if i>=j: #Condition for a null matrix
+                upper_matrix[i][j]+=matrix[i][j]
+            else:
+                continue
+    return upper_matrix \end{lstlisting}
+	If the matrix is $A=\begin{bmatrix}
+		1 & 2& 3\\
+		4& 5& 6
+	\end{bmatrix}$, then, the output is,
+	\begin{verbatim}
+		[[1, 0, 0], [4, 5, 0]]
+	\end{verbatim}
+	Now, for a lower triangular matrix,
+	\begin{lstlisting}[language=Python]
+def lower_triangular(matrix):
+	rows=len(matrix)
+	columns=len(matrix[0])
+	lower_matrix=null(rows,columns) #null matrix
+	for i in range(rows):
+		for j in range(columns):
+			if j>=i: #Condition for a null
+				lower_matrix[i][j]+=matrix[i][j]
+			else:
+				continue
+	return lower_matrix \end{lstlisting}
+	The output in this case is,
+	\begin{verbatim}
+		[[1, 2, 3], [0, 5, 6]]
+	\end{verbatim}
+	\end{explanation}
+	\subsection{Transpose of a Matrix}
+	The transpose of a matrix $A=[a_{ij}]_{m\times n}$ is given by,
+	\[A^T=[a_{ji}]_{n\times m}\]
+	\begin{eg}
+		Create another matrix which is the transpose of a given matrix.
+	\end{eg}
+	\begin{explanation}
+		\begin{lstlisting}[language=Python]
+def transpose(matrix):
+	rows=len(matrix)
+	columns=len(matrix[0])
+	transpose_matrix=null(columns, rows) #null matrix
+	for i in range(rows):
+		for j in range(columns):
+			transpose_matrix[j][i]+=matrix[i][j] #definition of transpose
+
+	return transpose_matrix \end{lstlisting}
+	If the matrix is $A=\begin{bmatrix}
+		1&2&3\\
+		4&5&6\\
+		1&1&1
+	\end{bmatrix}$
+	\end{explanation}, the output is,
+	\begin{verbatim}
+		[[1, 4, 1], [2, 5, 1], [3, 6, 1]]
+	\end{verbatim}
+\end{document}

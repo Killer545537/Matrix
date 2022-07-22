@@ -1,0 +1,79 @@
+\documentclass[titlepage]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows,patterns, backgrounds, calc,fadings,shadows.blur, shapes}
+\theoremstyle{plain}
+\usepackage[most]{tcolorbox}
+\usepackage{physunits}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{steinmetz}
+\usepackage{adjustbox}
+\usepackage{listings}
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\tcbuselibrary{xparse}
+\usepackage[font=small,labelfont=bf,margin=\parindent,tableposition=top]{caption}
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+	{\end{proof}}
+
+
+\declaretheoremstyle[
+headfont=\bfseries\sffamily\color{blue!70!black}, bodyfont=\normalfont,
+mdframed={
+	linewidth=2pt,
+	rightline=false, topline=false, bottomline=false,
+	linecolor=blue, backgroundcolor=blue!5,
+}
+]{thmbluebox}
+\declaretheorem[style=thmbluebox, numbered=no, name=Example]{eg}
+
+
+\declaretheoremstyle[
+headfont=\bfseries\sffamily\color{blue!70!black}, bodyfont=\normalfont,
+numbered=no,
+mdframed={
+	linewidth=2pt,
+	rightline=false, topline=false, bottomline=false,
+	linecolor=blue, backgroundcolor=blue!1,
+},
+]{thmexplanationbox}
+\declaretheorem[style=thmexplanationbox, name=Solution]{tmpexplanation}
+\newenvironment{explanation}[1][]{\vspace{-10pt}\begin{tmpexplanation}}{\end{tmpexplanation}}
+
+
+\declaretheoremstyle[
+headfont=\bfseries\sffamily\color{red!70!black}, bodyfont=\normalfont,
+mdframed={
+	linewidth=2pt,
+	rightline=false, topline=false, bottomline=false,
+	linecolor=red, backgroundcolor=red!5,
+}
+]{thmredbox}
+\declaretheorem[style=thmredbox, name=Theorem]{theorem}
+
+\declaretheoremstyle[
+headfont=\bfseries\sffamily\color{red!70!black}, bodyfont=\normalfont,
+numbered=no,
+mdframed={
+	linewidth=2pt,
+	rightline=false, topline=false, bottomline=false,
+	linecolor=red, backgroundcolor=red!2,
+},
+qed=\qedsymbol
+]{thmproofbox}
+\declaretheorem[style=thmproofbox, name=Proof]{replacementproof}
+\renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
+
