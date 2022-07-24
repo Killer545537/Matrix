@@ -179,7 +179,7 @@ def lower_triangular(matrix):
 	\begin{eg}
 		Create another matrix which is the transpose of a given matrix.
 	\end{eg}
-	\begin{explanation}
+	\begin{explanation}\phantom \\
 		\begin{lstlisting}[language=Python]
 def transpose(matrix):
 	rows=len(matrix)
@@ -199,4 +199,45 @@ def transpose(matrix):
 	\begin{verbatim}
 		[[1, 4, 1], [2, 5, 1], [3, 6, 1]]
 	\end{verbatim}
+	\subsection{Addition of Two Matrices}
+	Given two matrices $A=[a_{ij}]_{n_1\times m_1}$ and $B=[b_{ij}]_{n_2\times m_2}$, the sum $A+B$ is defined only if $(n_1,m_1)=(n_2,m_2)=(n,m) \ (\text{Say})$, i.e. the matrices have the same order.
+	\[C=A+B=[a_{ij}+b_{ij}]_{n\times m}\]\
+	\begin{eg}
+		Find the sum of two matrices.
+	\end{eg}
+	\begin{explanation}
+		It returns the sum of the matrices if it exists, else, returns -1.\\
+		\begin{lstlisting}[language=Python]
+def Matrix_Sum(matrix1,matrix2):
+    if len(matrix1)==len(matrix2) and len(matrix1[0])==len(matrix2[0]): #Checking for compatibility for addition
+        rows, columns=len(matrix1), len(matrix1[0])
+        sum_matrix=null(rows,columns) #null matrix
+        for i in range(rows):
+            for j in range(columns):
+                sum_matrix[i][j]+=matrix1[i][j]+matrix2[i][j] #definition of sum of matrices
+        return sum_matrix
+    else:
+        return -1 \end{lstlisting}
+		If the input matrices are $A=\begin{bmatrix}
+			1&2&3\\
+			4&5&6\\
+			1&1&1
+		\end{bmatrix}$ and $B=\begin{bmatrix}
+			1&2&3\\
+			4&5&6\\
+			2&2&2
+		\end{bmatrix}$, the output is,
+		\begin{verbatim}
+			[[2, 4, 6], [8, 10, 12], [3, 3, 3]]
+		\end{verbatim}
+		If the matrices are $A=\begin{bmatrix}
+			1&2&3\\
+			4&5&6\\
+			1&1&1
+		\end{bmatrix}$ and $B=\begin{bmatrix}
+			1&2&3\\
+			4&5&6\\
+		\end{bmatrix}$, the output is,\\
+		-1
+	\end{explanation}
 \end{document}

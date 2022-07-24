@@ -8,17 +8,21 @@ def row_wise(matrix):
             print(matrix[i][j],end="\t")
         print("\n")
 
-def transpose(matrix):
-    rows=len(matrix)
-    columns=len(matrix[0])
-    transpose_matrix=null(columns, rows) #null matrix
-    for i in range(rows):
-        for j in range(columns):
-            transpose_matrix[j][i]+=matrix[i][j] #definition of transpose
+def Matrix_Sum(matrix1,matrix2):
+    if len(matrix1)==len(matrix2) and len(matrix1[0])==len(matrix2[0]): #Checking for compatibility for addition
+        rows, columns=len(matrix1), len(matrix1[0])
+        sum_matrix=null(rows,columns)
+        for i in range(rows):
+            for j in range(columns):
+                sum_matrix[i][j]+=matrix1[i][j]+matrix2[i][j]
+        return sum_matrix
+    else:
+        return -1
 
-    return transpose_matrix
 
 A=[[1,2,3],[4,5,6],[1,1,1]]
-print(transpose(A))
+B=[[1,2,3],[4,5,6],[2,2,2]]
+print(Matrix_Sum(A,B))
+
 
 

@@ -29,3 +29,14 @@ def transpose(matrix):
             transpose_matrix[j][i]+=matrix[i][j] #definition of transpose
 
     return transpose_matrix
+
+def Matrix_Sum(matrix1,matrix2):
+    if len(matrix1)==len(matrix2) and len(matrix1[0])==len(matrix2[0]): #Checking for compatibility for addition
+        rows, columns=len(matrix1), len(matrix1[0])
+        sum_matrix=null(rows,columns)
+        for i in range(rows):
+            for j in range(columns):
+                sum_matrix[i][j]+=matrix1[i][j]+matrix2[i][j]
+        return sum_matrix
+    else:
+        return -1
