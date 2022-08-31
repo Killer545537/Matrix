@@ -240,4 +240,36 @@ def Matrix_Sum(matrix1,matrix2):
 		\end{bmatrix}$, the output is,\\
 		-1
 	\end{explanation}
+	\subsection{Subtraction of Two Matrices}
+	Matrices also have am additive inverse, i.e., there exists a matrix $B$ such that,
+	\[A+B=0\implies B=-A\]
+	The matrix $B$ is defined as $B=[-a_{ij}]_{n\times m}$ if the matrix $A$ js defined as $A=[a_{ij}]_{n\times m}$.\\
+	Thus, we can define the operation $A-B$ as $A+(-B)$ which is simple matrix addition.
+	\begin{eg}
+		Find the difference of two matrices.
+	\end{eg}
+	\begin{explanation}
+		It is similar to the sum of two matrices program.
+		\begin{lstlisting}[language=Python]
+def Matrix_Difference(matrix1,matrix2):
+#The program is matrix1-matrix2, since subtraction is not commutative
+matrix2_new=null(len(matrix2),len(matrix2[0]))
+for i in range(len(matrix2)):
+	for j in range(len(matrix2[0])):
+		matrix2_new[i][j]=-matrix2[i][j] #From the definition of the negative of a matrix
+return(Matrix_Sum(matrix1,matrix2_new))#From the definition of difference of two matrices
+		\end{lstlisting}
+		If the input matrices are $A=\begin{bmatrix}
+			1&2&3\\
+			4&5&6\\
+			1&1&1
+		\end{bmatrix}$ and $B=\begin{bmatrix}
+			1&2&3\\
+			4&5&6\\
+			2&2&2
+		\end{bmatrix}$, the output is, \begin{verbatim}
+			[[0, 0, 0], [0, 0, 0], [-1, -1, -1]]
+		\end{verbatim}
+	\end{explanation}
+	
 \end{document}
