@@ -271,5 +271,65 @@ return(Matrix_Sum(matrix1,matrix2_new))#From the definition of difference of two
 			[[0, 0, 0], [0, 0, 0], [-1, -1, -1]]
 		\end{verbatim}
 	\end{explanation}
-	
+	\subsection{Minor Matrix of an Element}
+	The minor matrix of an element is the matrix obtained from removing the $i^{\text{th}}$ row and $j^{\text{th}}$ column of a matrix.\
+	\begin{eg}
+		Find the minor matrix of a matrix given the location of the matrix,
+	\end{eg}
+	\begin{explanation}
+		For this, first we exclude the $i^{\text{th}}$ row. Then, we exclude the $j^{\text{th}}$ column \footnotetext{The following is an incredible one-liner.}.
+		\begin{lstlisting}[language=Python]
+def Minor_Matrix(mx,r,c):
+    return [row[:c]+row[c+1:] for row in (mx[:r]+mx[r+1:])] \end{lstlisting}
+	\end{explanation}
+	\subsection{Determinant of a Matrix}
+	The determinant is a scalar value that is a function of the entries of a square matrix. It is denoted by $det(A)$, $|A|$ or $\Delta$.\\
+	If $A=\begin{bmatrix}
+		a_{11} & a_{12}\\
+		a_{21} & a_{22}
+	\end{bmatrix}$ then, $\Delta =a_{11}a_{22}-a_{21}a_{12}$.\\
+	If $A=\begin{bmatrix}
+		a_{11} & a_{12}& a_{13}\\
+		a_{21} & a_{22}& a_{23}\\
+		a_{31}& a_{32}& a_{33}
+	\end{bmatrix}$ then, $\Delta=a_{11}\begin{vmatrix}
+	a_{22}& a_{23}\\
+	a_{32}& a_{33}
+	\end{vmatrix}+a_{22}\begin{vmatrix}
+	a_{21}& a_{23}\\
+	a_{31}& a_{33}
+	\end{vmatrix}+a_{33}\begin{vmatrix}
+	a_{21}& a_{22}\\
+	a_{31}& a_{32}
+	\end{vmatrix}$\\
+	Before finding the determinant of a matrix, let us look at Cofactors.
+	\subsubsection{Cofactors}
+	The cofactor of an element $a_{ij}$ is denoted by $A_{ij}$ and is given by,
+	\[A_{ij}=(-1)^{i+j}M_{ij}\]
+	Where, $M_{ij}$ is the determinant of the minor matrix of the element $a_{ij}$.
+	The determinant of a matrix is thus given by,
+	\[\Delta=\sum\limits_{j=0}^n a_{1j}A_{1j}\]
+	Thus, the determinant of a matrix is the sum of the elements multiplied with their cofactors.
+	\begin{eg}
+		Find the determinant of a matrix.
+	\end{eg}
+	\begin{explanation}
+		Since we have a closed form for the determinant of a $2\times 2$ matrix, we can reduce all determinants\footnote{So, we need to use recursion.} to finding the determinant of a smaller matrix by using cofactors.
+		\begin{lstlisting}[language=Python]
+			def Determinant(mx):
+			# for the base case when the matrix is 2*2
+			if len(mx) == 2:
+				return mx[0][0] * mx[1][1] - mx[0][1] * mx[1][0]
+			determinant = 0
+			# We will only expand along the first row
+			for i in range(len(mx)):
+				determinant += (
+					((-1) ** i) * mx[0][i] * Determinant(Minor_Matrix(mx, 0, i))
+				)  # By definition
+			return determinant \end{lstlisting}
+
+	\end{explanation}
+
+
+
 \end{document}
