@@ -63,11 +63,22 @@ def Matrix_Difference(matrix1, matrix2):
     )  # From the definition of difference of two matrices
 
 
+def Division(mx, scalar: int):
+    new_matrix = null(len(mx), len(mx[0]))
+    for i in range(len(mx)):
+        for j in range(len(mx[0])):
+            new_matrix[i][j] += mx[i][j] / scalar
+    return new_matrix
+
+
 def Minor_Matrix(mx, r, c):
     return [row[:c] + row[c + 1 :] for row in (mx[:r] + mx[r + 1 :])]
 
 
 def Determinant(mx):
+    # for an even smaller case
+    if len(mx) == 1:
+        return mx[0][0]
     # for the base case when the matrix is 2*2
     if len(mx) == 2:
         return mx[0][0] * mx[1][1] - mx[0][1] * mx[1][0]
@@ -78,3 +89,22 @@ def Determinant(mx):
             ((-1) ** i) * mx[0][i] * Determinant(Minor_Matrix(mx, 0, i))
         )  # By definition
     return determinant
+
+
+def Adjoint(mx):
+    temp_matrix = []  # Empty matrix before the transpose
+    for i in range(len(mx)):
+        row = []  # Initialise each row
+        for j in range(len(mx)):
+            row.append(
+                ((-1) ** (i + j)) * Determinant(Minor_Matrix(mx, i, j))
+            )  # from the definition of adjoint
+        temp_matrix.append(row)
+    return transpose(temp_matrix)
+
+
+def Inverse(mx):
+    if Determinant(mx) == 0:
+        return None  # The inverse does not exist in this case
+    else:
+        return Division(Adjoint(mx), Determinant(mx))  # By definition

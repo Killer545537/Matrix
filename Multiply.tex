@@ -271,6 +271,22 @@ return(Matrix_Sum(matrix1,matrix2_new))#From the definition of difference of two
 			[[0, 0, 0], [0, 0, 0], [-1, -1, -1]]
 		\end{verbatim}
 	\end{explanation}
+	\section{Division of a Matrix by a Scalar}
+	When a matrix is divided by a scalar, each element of the matrix is reduced by a factor of the scalar, i.e.,
+	\[\frac{A}{k}=\left[\frac{a_{ij}}{k}\right]\]
+	\begin{eg}
+		Find the result of a matrix divided by a scalar.
+	\end{eg}
+	\begin{explanation}
+		Using the above definition,
+		\begin{lstlisting}[language=Python]
+def Division(mx, scalar: int):
+    new_matrix = null(len(mx), len(mx[0]))
+    for i in range(len(mx)):
+        for j in range(len(mx[0])):
+            new_matrix[i][j] += mx[i][j] / scalar
+    return new_matrix \end{lstlisting}
+	\end{explanation}
 	\subsection{Minor Matrix of an Element}
 	The minor matrix of an element is the matrix obtained from removing the $i^{\text{th}}$ row and $j^{\text{th}}$ column of a matrix.\
 	\begin{eg}
@@ -327,7 +343,41 @@ def Minor_Matrix(mx,r,c):
 					((-1) ** i) * mx[0][i] * Determinant(Minor_Matrix(mx, 0, i))
 				)  # By definition
 			return determinant \end{lstlisting}
-
+	\end{explanation}
+	\section{Inverse of a Matrix}
+	If $A$ is a square matrix of order $m$, and there exists another square matrix $B$ of the same order $m$, such that $AB=BA=I$, then $B$ is called the inverse matrix of $A$ and it is denoted by $A^{-1}$. In that case $A$ is said to be invertible. The inverse of a matrix if it exists is unique.\
+	\subsection{Adjoint of a Matrix}
+	The adjoint of a square matrix $A=[a_{ij}]_{n\cross n}$ is defined as the transpose of the matrix $[A_{ij}]_{n\cross n}$, i.e.,
+	\[ \text{adj} \ A=[A_{ij}]_{n\cross n}\]
+	\begin{eg}
+		Find the adjoint of a matrix.
+	\end{eg}
+	\begin{explanation} \phantom \\
+		\begin{lstlisting}[language=Python]
+def Adjoint(mx):
+    temp_matrix = []  # Empty matrix before the transpose
+    for i in range(len(mx)):
+        row = []  # Initialise each row
+        for j in range(len(mx)):
+            row.append(
+                ((-1) ** (i + j)) * Determinant(Minor_Matrix(mx, i, j))
+            )  # from the definition of adjoint
+        temp_matrix.append(row)
+    return transpose(temp_matrix) \end{lstlisting}
+	\end{explanation}
+	The inverse of a matrix can be calculated by using:
+	\[A^{-1}=\frac{1}{|A|}\text{adj} \ A\]
+	\begin{eg}
+		Find the inverse of a matrix.
+	\end{eg}
+	\begin{explanation}
+		Using the above definition,
+		\begin{lstlisting}[language=Python]
+def Inverse(mx):
+	if Determinant(mx) == 0:
+		return None  # The inverse does not exist in this case
+	else:
+		return Division(Adjoint(mx), Determinant(mx))  # By definition \end{lstlisting}
 	\end{explanation}
 
 
