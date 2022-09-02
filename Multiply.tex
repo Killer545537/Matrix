@@ -379,7 +379,16 @@ def Inverse(mx):
 	else:
 		return Division(Adjoint(mx), Determinant(mx))  # By definition \end{lstlisting}
 	\end{explanation}
-
+	\section{Multiplication of Two Matrices}
+	The product of two matrices is defined if the number of columns of $A$ is equal to the number of rows of $B$. If $A=[a_{ij}]_{m\cross n}$ and $B=[b_{jk}]_{n\cross p}$, then the $i^{th}$ row of $A$ is $ \begin{bmatrix}
+		a_{i1}& a_{i2}& \cdots & a_{in}
+	\end{bmatrix}$ and the $k^{th}$ column of $B$ is $ \begin{bmatrix}
+	b_{1k} \\
+	b_{2k} \\
+	\vdots \\
+	b_{nk}
+	\end{bmatrix}$, then $c_{ik}=\sum\limits_{j=1}^{n}a_{ij}b_{jk}$. The matrix $C=[c_{ik}]_{m\cross p}$ is the product $A B$. Matrix Multiplication is not commutative but is associative and distributive. Moreover, $AB=0 \nRightarrow A=0 \lor B=0$.\\
+	Here, we will take two approaches to find the 
 
 
 \end{document}

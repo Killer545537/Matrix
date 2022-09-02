@@ -11,3 +11,4 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Cofactors}{5}{}%
 \contentsline {section}{\numberline {3}Inverse of a Matrix}{5}{}%
 \contentsline {subsection}{\numberline {3.1}Adjoint of a Matrix}{5}{}%
+\contentsline {section}{\numberline {4}Multiplication of Two Matrices}{6}{}%
