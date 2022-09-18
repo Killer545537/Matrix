@@ -108,3 +108,13 @@ def Inverse(mx):
         return None  # The inverse does not exist in this case
     else:
         return Division(Adjoint(mx), Determinant(mx))  # By definition
+
+
+def Matrix_Multiplication(mx1, mx2):
+    return [
+        [
+            sum([mx1[i][k] * mx2[k][j] for k in range(len(mx1[0]))])
+            for j in range(len(mx2[0]))
+        ]
+        for i in range(len(mx1))
+    ] #Basically a one-liner, but looks bigger due to formatting

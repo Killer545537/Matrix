@@ -388,7 +388,37 @@ def Inverse(mx):
 	\vdots \\
 	b_{nk}
 	\end{bmatrix}$, then $c_{ik}=\sum\limits_{j=1}^{n}a_{ij}b_{jk}$. The matrix $C=[c_{ik}]_{m\cross p}$ is the product $A B$. Matrix Multiplication is not commutative but is associative and distributive. Moreover, $AB=0 \nRightarrow A=0 \lor B=0$.\\
-	Here, we will take two approaches to find the 
-
+	Here, we will take two approaches to find the product of two matrices.
+	\begin{eg}
+		Find the product of two matrices.
+	\end{eg}
+	\begin{explanation}
+		Here, we will use the exact definition used above. We will loop 3 times.
+		\begin{lstlisting}[language=Python]
+def Multiplication(mx1, mx2):
+    if len(mx1[0]) != len(mx2):
+        return "The matrices are incompatible for multiplication."
+    else:
+        result = null(len(mx1), len(mx2[0]))
+        for i in range(len(mx1)):  # Loop through rows of first matrix
+            for j in range(len(mx2[0])):  # Loop through each column of second matrix
+                for k in range(len(mx2)):  # Loop through each row of second matrix
+                    result[i][j] += mx1[i][k] * mx2[k][j]  # By definition
+        return result \end{lstlisting}
+		The following can also be done one line as follows:
+		\begin{lstlisting}[language=Python]
+def Matrix_Multiplication(mx1,mx2):
+    return [[sum([mx1[i][k]*mx2[k][j] for k in range(len(mx1[0]))]) for j in range(len(mx2[0]))] for i in range(len(mx1))] \end{lstlisting}
+	This method is however very slow, as it loops three times. If the matrices are square matrices of the same order (n), then the program takes $O(n*n*n)=O(n^3)$ time.
+	\end{explanation}
+	\subsection{Strassen Algorithm}
+	Strassen Algorithm\footnote{named after the German mathematician Volker Strassen.} is an algorithm for multiplication of two matrices. It is much faster than the traditional multiplication algorithms (like the one mentioned above). However, it only works for square matrices of the order $2^n$, where $n\in \mathrm{N}$.
+	\begin{eg}
+		Using the Strassen Algorithm.
+	\end{eg}
+	\begin{explanation}
+		It works on the principle of divide and conquer. Let us discuss the base case, i.e. for a $2^1\times 2^1$ matrix.
+	\end{explanation}
+	
 
 \end{document}
