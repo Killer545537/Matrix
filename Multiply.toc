@@ -13,3 +13,4 @@
 \contentsline {subsection}{\numberline {3.1}Adjoint of a Matrix}{5}{}%
 \contentsline {section}{\numberline {4}Multiplication of Two Matrices}{6}{}%
 \contentsline {subsection}{\numberline {4.1}Strassen Algorithm}{6}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Joining Matrices}{6}{}%

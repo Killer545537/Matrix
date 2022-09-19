@@ -27,62 +27,62 @@
 \title{Matrix Multiplication}
 
 \begin{document}
-	\begin{titlepage}
-		\begin{center}
-			\huge Project Work \vfil
-			Matrices and their Operations in Python\\
-			
-		\end{center}
-	\end{titlepage}
-	\tableofcontents
-	\newpage
-	
-	\begin{abstract}
-		Matrices are a part of Linear Algebra which is used everywhere in Computer Science. It is used in computer graphics to create 2D/3D models, animations, etc. It is used in cryptography (making data secure) by using matrices to store data and a key matrix to encrypt it and its inverse to decrypt it. In this project we will look at operations on matrices in Python.
-	\end{abstract}
-	\section{What is a Matrix?}
-	A matrix is a rectangular array of data\footnote{Data may be of any form, like numbers, expressions or alphabets.} arranged in rows and columns.\\
-	A matrix looks like the following:
-	\[A=\begin{bmatrix}
+\begin{titlepage}
+	\begin{center}
+		\huge Project Work \vfil
+		Matrices and their Operations in Python\\
+
+	\end{center}
+\end{titlepage}
+\tableofcontents
+\newpage
+
+\begin{abstract}
+	Matrices are a part of Linear Algebra which is used everywhere in Computer Science. It is used in computer graphics to create 2D/3D models, animations, etc. It is used in cryptography (making data secure) by using matrices to store data and a key matrix to encrypt it and its inverse to decrypt it. In this project we will look at operations on matrices in Python.
+\end{abstract}
+\section{What is a Matrix?}
+A matrix is a rectangular array of data\footnote{Data may be of any form, like numbers, expressions or alphabets.} arranged in rows and columns.\\
+A matrix looks like the following:
+\[A=\begin{bmatrix}
 		1 & 10 & 12 \\
-		2&20& 22
+		2 & 20 & 22
 	\end{bmatrix}_{2\times 3}\]
-	A matrix is represented by capital letters and the subscript represents $\text{Number of rows}\times \text{Number of columns}$ and the matrix $A$ is called \emph{a 2 by 3 matrix}.\\
-	In Python, to enter a matrix, we use nested lists like: 
-	\begin{lstlisting}[language=Python]
+A matrix is represented by capital letters and the subscript represents $\text{Number of rows}\times \text{Number of columns}$ and the matrix $A$ is called \emph{a 2 by 3 matrix}.\\
+In Python, to enter a matrix, we use nested lists like:
+\begin{lstlisting}[language=Python]
 Matrix=[
 	[1,10,12],
 	[2,10,22]
 ]\end{lstlisting}
-	\subsection{Accessing a Matrix}
-	A matrix a is generally written as $A=[a_{ij}]_{m\times n}$ where $1\leq i\leq m \land 1\leq j \leq n$. Thus, if we know the location of an element say, \emph{element in row 2 and column 1}, we can write it as $a_{21}$.
-	In Python as well, if we need to find the \emph{element in row i and column j}, we can return it as:
-	\begin{lstlisting}[language=Python]
+\subsection{Accessing a Matrix}
+A matrix a is generally written as $A=[a_{ij}]_{m\times n}$ where $1\leq i\leq m \land 1\leq j \leq n$. Thus, if we know the location of an element say, \emph{element in row 2 and column 1}, we can write it as $a_{21}$.
+In Python as well, if we need to find the \emph{element in row i and column j}, we can return it as:
+\begin{lstlisting}[language=Python]
 def find_element(matrix, row, column):
 	row_index=row-1 #we need to use row-1 as indexes begin from 0
 	column_index=column-1
-	return matrix[row_index][column_index] \end{lstlisting}	
-	\begin{eg}
-		We can also access the elements of a matrix, either row or column wise.
-	\end{eg}
-	\begin{explanation}
-		To print the matrix row-wise:
-		\begin{lstlisting}[language=Python]
+	return matrix[row_index][column_index] \end{lstlisting}
+\begin{eg}
+	We can also access the elements of a matrix, either row or column wise.
+\end{eg}
+\begin{explanation}
+	To print the matrix row-wise:
+	\begin{lstlisting}[language=Python]
 def row_wise(matrix):
 	for i in range(len(matrix)):
 		for j in range(len(matrix[0])):
 			print(matrix[i][j],end="\t")
 	print("\n") \end{lstlisting}
 	If matrix is $A=\begin{bmatrix}
-		1 & 10 & 12 \\
-		2&20& 22
-	\end{bmatrix}$, then, the output is,
+			1 & 10 & 12 \\
+			2 & 20 & 22
+		\end{bmatrix}$, then, the output is,
 	\begin{verbatim}
 1       10      12
 
 2       20      22
 	\end{verbatim}
-		To print the matrix column-wise:
+	To print the matrix column-wise:
 	\begin{lstlisting}[language=Python]
 def column_wise(matrix):
 	for i in range(len(matrix[0])):
@@ -97,46 +97,46 @@ def column_wise(matrix):
 		
 		12      22
 	\end{verbatim}
-	\end{explanation}
-	\subsection{Null Matrix}
-	A null matrix is one such that,
-	\[a_{ij}=0 \quad \forall \ i,j\]
-	Such a matrix is represented by $O$.
-	\begin{eg}
-		Creating a null matrix of a given order.
-	\end{eg}
-	\begin{explanation} \phantom \\
-		\begin{lstlisting}[language=Python]
+\end{explanation}
+\subsection{Null Matrix}
+A null matrix is one such that,
+\[a_{ij}=0 \quad \forall \ i,j\]
+Such a matrix is represented by $O$.
+\begin{eg}
+	Creating a null matrix of a given order.
+\end{eg}
+\begin{explanation} \phantom \\
+	\begin{lstlisting}[language=Python]
 def null(rows,columns):
 	null_matrix=[[0 for i in range(columns)] for i in range(rows)] #loop over columns then over rows
 	return null_matrix \end{lstlisting}
-	\end{explanation}
+\end{explanation}
 
-	\subsection{Upper and Lower Triangular Matrices}
-	The upper triangular matrix is a matrix in which all the entries below the diagonal are zero, i.e.,
-	\[a_{ij}=0\quad \forall \ i\geq j\]
-	Or,
-	\[A=\begin{bmatrix}
-		a_{11} & a_{12} & \dots & a_{1n}\\
-		0 & a_{22} & \dots & a_{2n}\\
+\subsection{Upper and Lower Triangular Matrices}
+The upper triangular matrix is a matrix in which all the entries below the diagonal are zero, i.e.,
+\[a_{ij}=0\quad \forall \ i\geq j\]
+Or,
+\[A=\begin{bmatrix}
+		a_{11} & a_{12} & \dots  & a_{1n} \\
+		0      & a_{22} & \dots  & a_{2n} \\
 		\vdots & \vdots & \ddots & \vdots \\
-		0& 0& \cdots & a_{nn}
+		0      & 0      & \cdots & a_{nn}
 	\end{bmatrix}\]
-	The lower triangular matrix is a matrix in which all the entries above the diagonal are zero\footnote{These definitions are open for discussion. Some authors claim that the matrix must be square, while some do not restrict the matrix. Even though a 'triangle' would not be formed in the case of rectangular matrices, it is acceptable. We have chosen not to restrict the matrices to only square matrices.}, i.e.,
-	\[a_{ij}=0\quad \forall \ i\leq j\]
-	Or,
-	\[A=\begin{bmatrix}
-		a_{11}& 0 & \dots & 0\\
-		a_{21}& a_{22} & \dots & 0\\
-		\vdots & \vdots & \ddots & 0\\
-		a_{n1}& a_{n2}& \dots & a_{nn}
+The lower triangular matrix is a matrix in which all the entries above the diagonal are zero\footnote{These definitions are open for discussion. Some authors claim that the matrix must be square, while some do not restrict the matrix. Even though a 'triangle' would not be formed in the case of rectangular matrices, it is acceptable. We have chosen not to restrict the matrices to only square matrices.}, i.e.,
+\[a_{ij}=0\quad \forall \ i\leq j\]
+Or,
+\[A=\begin{bmatrix}
+		a_{11} & 0      & \dots  & 0      \\
+		a_{21} & a_{22} & \dots  & 0      \\
+		\vdots & \vdots & \ddots & 0      \\
+		a_{n1} & a_{n2} & \dots  & a_{nn}
 	\end{bmatrix}\]
-	\begin{eg}
-		Creating an upper and lower triangular matrix.
-	\end{eg}
-	\begin{explanation}
-		First for an upper triangular matrix,
-		\begin{lstlisting}[language=Python]
+\begin{eg}
+	Creating an upper and lower triangular matrix.
+\end{eg}
+\begin{explanation}
+	First for an upper triangular matrix,
+	\begin{lstlisting}[language=Python]
 def upper_triangular(matrix):
     rows=len(matrix)
     columns=len(matrix[0])
@@ -149,9 +149,9 @@ def upper_triangular(matrix):
                 continue
     return upper_matrix \end{lstlisting}
 	If the matrix is $A=\begin{bmatrix}
-		1 & 2& 3\\
-		4& 5& 6
-	\end{bmatrix}$, then, the output is,
+			1 & 2 & 3 \\
+			4 & 5 & 6
+		\end{bmatrix}$, then, the output is,
 	\begin{verbatim}
 		[[1, 0, 0], [4, 5, 0]]
 	\end{verbatim}
@@ -172,15 +172,15 @@ def lower_triangular(matrix):
 	\begin{verbatim}
 		[[1, 2, 3], [0, 5, 6]]
 	\end{verbatim}
-	\end{explanation}
-	\subsection{Transpose of a Matrix}
-	The transpose of a matrix $A=[a_{ij}]_{m\times n}$ is given by,
-	\[A^T=[a_{ji}]_{n\times m}\]
-	\begin{eg}
-		Create another matrix which is the transpose of a given matrix.
-	\end{eg}
-	\begin{explanation}\phantom \\
-		\begin{lstlisting}[language=Python]
+\end{explanation}
+\subsection{Transpose of a Matrix}
+The transpose of a matrix $A=[a_{ij}]_{m\times n}$ is given by,
+\[A^T=[a_{ji}]_{n\times m}\]
+\begin{eg}
+	Create another matrix which is the transpose of a given matrix.
+\end{eg}
+\begin{explanation}\phantom \\
+	\begin{lstlisting}[language=Python]
 def transpose(matrix):
 	rows=len(matrix)
 	columns=len(matrix[0])
@@ -191,23 +191,23 @@ def transpose(matrix):
 
 	return transpose_matrix \end{lstlisting}
 	If the matrix is $A=\begin{bmatrix}
-		1&2&3\\
-		4&5&6\\
-		1&1&1
-	\end{bmatrix}$
-	\end{explanation}, the output is,
-	\begin{verbatim}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			1 & 1 & 1
+		\end{bmatrix}$
+\end{explanation}, the output is,
+\begin{verbatim}
 		[[1, 4, 1], [2, 5, 1], [3, 6, 1]]
 	\end{verbatim}
-	\subsection{Addition of Two Matrices}
-	Given two matrices $A=[a_{ij}]_{n_1\times m_1}$ and $B=[b_{ij}]_{n_2\times m_2}$, the sum $A+B$ is defined only if $(n_1,m_1)=(n_2,m_2)=(n,m) \ (\text{Say})$, i.e. the matrices have the same order.
-	\[C=A+B=[a_{ij}+b_{ij}]_{n\times m}\]\
-	\begin{eg}
-		Find the sum of two matrices.
-	\end{eg}
-	\begin{explanation}
-		It returns the sum of the matrices if it exists, else, returns -1.\\
-		\begin{lstlisting}[language=Python]
+\subsection{Addition of Two Matrices}
+Given two matrices $A=[a_{ij}]_{n_1\times m_1}$ and $B=[b_{ij}]_{n_2\times m_2}$, the sum $A+B$ is defined only if $(n_1,m_1)=(n_2,m_2)=(n,m) \ (\text{Say})$, i.e. the matrices have the same order.
+\[C=A+B=[a_{ij}+b_{ij}]_{n\times m}\]\
+\begin{eg}
+	Find the sum of two matrices.
+\end{eg}
+\begin{explanation}
+	It returns the sum of the matrices if it exists, else, returns -1.\\
+	\begin{lstlisting}[language=Python]
 def Matrix_Sum(matrix1,matrix2):
     if len(matrix1)==len(matrix2) and len(matrix1[0])==len(matrix2[0]): #Checking for compatibility for addition
         rows, columns=len(matrix1), len(matrix1[0])
@@ -218,39 +218,39 @@ def Matrix_Sum(matrix1,matrix2):
         return sum_matrix
     else:
         return -1 \end{lstlisting}
-		If the input matrices are $A=\begin{bmatrix}
-			1&2&3\\
-			4&5&6\\
-			1&1&1
+	If the input matrices are $A=\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			1 & 1 & 1
 		\end{bmatrix}$ and $B=\begin{bmatrix}
-			1&2&3\\
-			4&5&6\\
-			2&2&2
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			2 & 2 & 2
 		\end{bmatrix}$, the output is,
-		\begin{verbatim}
+	\begin{verbatim}
 			[[2, 4, 6], [8, 10, 12], [3, 3, 3]]
 		\end{verbatim}
-		If the matrices are $A=\begin{bmatrix}
-			1&2&3\\
-			4&5&6\\
-			1&1&1
+	If the matrices are $A=\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			1 & 1 & 1
 		\end{bmatrix}$ and $B=\begin{bmatrix}
-			1&2&3\\
-			4&5&6\\
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
 		\end{bmatrix}$, the output is,\\
-		-1
-	\end{explanation}
-	\subsection{Subtraction of Two Matrices}
-	Matrices also have am additive inverse, i.e., there exists a matrix $B$ such that,
-	\[A+B=0\implies B=-A\]
-	The matrix $B$ is defined as $B=[-a_{ij}]_{n\times m}$ if the matrix $A$ js defined as $A=[a_{ij}]_{n\times m}$.\\
-	Thus, we can define the operation $A-B$ as $A+(-B)$ which is simple matrix addition.
-	\begin{eg}
-		Find the difference of two matrices.
-	\end{eg}
-	\begin{explanation}
-		It is similar to the sum of two matrices program.
-		\begin{lstlisting}[language=Python]
+	-1
+\end{explanation}
+\subsection{Subtraction of Two Matrices}
+Matrices also have am additive inverse, i.e., there exists a matrix $B$ such that,
+\[A+B=0\implies B=-A\]
+The matrix $B$ is defined as $B=[-a_{ij}]_{n\times m}$ if the matrix $A$ js defined as $A=[a_{ij}]_{n\times m}$.\\
+Thus, we can define the operation $A-B$ as $A+(-B)$ which is simple matrix addition.
+\begin{eg}
+	Find the difference of two matrices.
+\end{eg}
+\begin{explanation}
+	It is similar to the sum of two matrices program.
+	\begin{lstlisting}[language=Python]
 def Matrix_Difference(matrix1,matrix2):
 #The program is matrix1-matrix2, since subtraction is not commutative
 matrix2_new=null(len(matrix2),len(matrix2[0]))
@@ -259,79 +259,79 @@ for i in range(len(matrix2)):
 		matrix2_new[i][j]=-matrix2[i][j] #From the definition of the negative of a matrix
 return(Matrix_Sum(matrix1,matrix2_new))#From the definition of difference of two matrices
 		\end{lstlisting}
-		If the input matrices are $A=\begin{bmatrix}
-			1&2&3\\
-			4&5&6\\
-			1&1&1
+	If the input matrices are $A=\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			1 & 1 & 1
 		\end{bmatrix}$ and $B=\begin{bmatrix}
-			1&2&3\\
-			4&5&6\\
-			2&2&2
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			2 & 2 & 2
 		\end{bmatrix}$, the output is, \begin{verbatim}
 			[[0, 0, 0], [0, 0, 0], [-1, -1, -1]]
 		\end{verbatim}
-	\end{explanation}
-	\section{Division of a Matrix by a Scalar}
-	When a matrix is divided by a scalar, each element of the matrix is reduced by a factor of the scalar, i.e.,
-	\[\frac{A}{k}=\left[\frac{a_{ij}}{k}\right]\]
-	\begin{eg}
-		Find the result of a matrix divided by a scalar.
-	\end{eg}
-	\begin{explanation}
-		Using the above definition,
-		\begin{lstlisting}[language=Python]
+\end{explanation}
+\section{Division of a Matrix by a Scalar}
+When a matrix is divided by a scalar, each element of the matrix is reduced by a factor of the scalar, i.e.,
+\[\frac{A}{k}=\left[\frac{a_{ij}}{k}\right]\]
+\begin{eg}
+	Find the result of a matrix divided by a scalar.
+\end{eg}
+\begin{explanation}
+	Using the above definition,
+	\begin{lstlisting}[language=Python]
 def Division(mx, scalar: int):
     new_matrix = null(len(mx), len(mx[0]))
     for i in range(len(mx)):
         for j in range(len(mx[0])):
             new_matrix[i][j] += mx[i][j] / scalar
     return new_matrix \end{lstlisting}
-	\end{explanation}
-	\subsection{Minor Matrix of an Element}
-	The minor matrix of an element is the matrix obtained from removing the $i^{\text{th}}$ row and $j^{\text{th}}$ column of a matrix.\
-	\begin{eg}
-		Find the minor matrix of a matrix given the location of the matrix,
-	\end{eg}
-	\begin{explanation}
-		For this, first we exclude the $i^{\text{th}}$ row. Then, we exclude the $j^{\text{th}}$ column \footnotetext{The following is an incredible one-liner.}.
-		\begin{lstlisting}[language=Python]
+\end{explanation}
+\subsection{Minor Matrix of an Element}
+The minor matrix of an element is the matrix obtained from removing the $i^{\text{th}}$ row and $j^{\text{th}}$ column of a matrix.\
+\begin{eg}
+	Find the minor matrix of a matrix given the location of the matrix,
+\end{eg}
+\begin{explanation}
+	For this, first we exclude the $i^{\text{th}}$ row. Then, we exclude the $j^{\text{th}}$ column \footnotetext{The following is an incredible one-liner.}.
+	\begin{lstlisting}[language=Python]
 def Minor_Matrix(mx,r,c):
     return [row[:c]+row[c+1:] for row in (mx[:r]+mx[r+1:])] \end{lstlisting}
-	\end{explanation}
-	\subsection{Determinant of a Matrix}
-	The determinant is a scalar value that is a function of the entries of a square matrix. It is denoted by $det(A)$, $|A|$ or $\Delta$.\\
-	If $A=\begin{bmatrix}
-		a_{11} & a_{12}\\
+\end{explanation}
+\subsection{Determinant of a Matrix}
+The determinant is a scalar value that is a function of the entries of a square matrix. It is denoted by $det(A)$, $|A|$ or $\Delta$.\\
+If $A=\begin{bmatrix}
+		a_{11} & a_{12} \\
 		a_{21} & a_{22}
 	\end{bmatrix}$ then, $\Delta =a_{11}a_{22}-a_{21}a_{12}$.\\
-	If $A=\begin{bmatrix}
-		a_{11} & a_{12}& a_{13}\\
-		a_{21} & a_{22}& a_{23}\\
-		a_{31}& a_{32}& a_{33}
+If $A=\begin{bmatrix}
+		a_{11} & a_{12} & a_{13} \\
+		a_{21} & a_{22} & a_{23} \\
+		a_{31} & a_{32} & a_{33}
 	\end{bmatrix}$ then, $\Delta=a_{11}\begin{vmatrix}
-	a_{22}& a_{23}\\
-	a_{32}& a_{33}
+		a_{22} & a_{23} \\
+		a_{32} & a_{33}
 	\end{vmatrix}+a_{22}\begin{vmatrix}
-	a_{21}& a_{23}\\
-	a_{31}& a_{33}
+		a_{21} & a_{23} \\
+		a_{31} & a_{33}
 	\end{vmatrix}+a_{33}\begin{vmatrix}
-	a_{21}& a_{22}\\
-	a_{31}& a_{32}
+		a_{21} & a_{22} \\
+		a_{31} & a_{32}
 	\end{vmatrix}$\\
-	Before finding the determinant of a matrix, let us look at Cofactors.
-	\subsubsection{Cofactors}
-	The cofactor of an element $a_{ij}$ is denoted by $A_{ij}$ and is given by,
-	\[A_{ij}=(-1)^{i+j}M_{ij}\]
-	Where, $M_{ij}$ is the determinant of the minor matrix of the element $a_{ij}$.
-	The determinant of a matrix is thus given by,
-	\[\Delta=\sum\limits_{j=0}^n a_{1j}A_{1j}\]
-	Thus, the determinant of a matrix is the sum of the elements multiplied with their cofactors.
-	\begin{eg}
-		Find the determinant of a matrix.
-	\end{eg}
-	\begin{explanation}
-		Since we have a closed form for the determinant of a $2\times 2$ matrix, we can reduce all determinants\footnote{So, we need to use recursion.} to finding the determinant of a smaller matrix by using cofactors.
-		\begin{lstlisting}[language=Python]
+Before finding the determinant of a matrix, let us look at Cofactors.
+\subsubsection{Cofactors}
+The cofactor of an element $a_{ij}$ is denoted by $A_{ij}$ and is given by,
+\[A_{ij}=(-1)^{i+j}M_{ij}\]
+Where, $M_{ij}$ is the determinant of the minor matrix of the element $a_{ij}$.
+The determinant of a matrix is thus given by,
+\[\Delta=\sum\limits_{j=0}^n a_{1j}A_{1j}\]
+Thus, the determinant of a matrix is the sum of the elements multiplied with their cofactors.
+\begin{eg}
+	Find the determinant of a matrix.
+\end{eg}
+\begin{explanation}
+	Since we have a closed form for the determinant of a $2\times 2$ matrix, we can reduce all determinants\footnote{So, we need to use recursion.} to finding the determinant of a smaller matrix by using cofactors.
+	\begin{lstlisting}[language=Python]
 			def Determinant(mx):
 			# for the base case when the matrix is 2*2
 			if len(mx) == 2:
@@ -343,17 +343,17 @@ def Minor_Matrix(mx,r,c):
 					((-1) ** i) * mx[0][i] * Determinant(Minor_Matrix(mx, 0, i))
 				)  # By definition
 			return determinant \end{lstlisting}
-	\end{explanation}
-	\section{Inverse of a Matrix}
-	If $A$ is a square matrix of order $m$, and there exists another square matrix $B$ of the same order $m$, such that $AB=BA=I$, then $B$ is called the inverse matrix of $A$ and it is denoted by $A^{-1}$. In that case $A$ is said to be invertible. The inverse of a matrix if it exists is unique.\
-	\subsection{Adjoint of a Matrix}
-	The adjoint of a square matrix $A=[a_{ij}]_{n\cross n}$ is defined as the transpose of the matrix $[A_{ij}]_{n\cross n}$, i.e.,
-	\[ \text{adj} \ A=[A_{ij}]_{n\cross n}\]
-	\begin{eg}
-		Find the adjoint of a matrix.
-	\end{eg}
-	\begin{explanation} \phantom \\
-		\begin{lstlisting}[language=Python]
+\end{explanation}
+\section{Inverse of a Matrix}
+If $A$ is a square matrix of order $m$, and there exists another square matrix $B$ of the same order $m$, such that $AB=BA=I$, then $B$ is called the inverse matrix of $A$ and it is denoted by $A^{-1}$. In that case $A$ is said to be invertible. The inverse of a matrix if it exists is unique.\
+\subsection{Adjoint of a Matrix}
+The adjoint of a square matrix $A=[a_{ij}]_{n\cross n}$ is defined as the transpose of the matrix $[A_{ij}]_{n\cross n}$, i.e.,
+\[ \text{adj} \ A=[A_{ij}]_{n\cross n}\]
+\begin{eg}
+	Find the adjoint of a matrix.
+\end{eg}
+\begin{explanation} \phantom \\
+	\begin{lstlisting}[language=Python]
 def Adjoint(mx):
     temp_matrix = []  # Empty matrix before the transpose
     for i in range(len(mx)):
@@ -364,37 +364,37 @@ def Adjoint(mx):
             )  # from the definition of adjoint
         temp_matrix.append(row)
     return transpose(temp_matrix) \end{lstlisting}
-	\end{explanation}
-	The inverse of a matrix can be calculated by using:
-	\[A^{-1}=\frac{1}{|A|}\text{adj} \ A\]
-	\begin{eg}
-		Find the inverse of a matrix.
-	\end{eg}
-	\begin{explanation}
-		Using the above definition,
-		\begin{lstlisting}[language=Python]
+\end{explanation}
+The inverse of a matrix can be calculated by using:
+\[A^{-1}=\frac{1}{|A|}\text{adj} \ A\]
+\begin{eg}
+	Find the inverse of a matrix.
+\end{eg}
+\begin{explanation}
+	Using the above definition,
+	\begin{lstlisting}[language=Python]
 def Inverse(mx):
 	if Determinant(mx) == 0:
 		return None  # The inverse does not exist in this case
 	else:
 		return Division(Adjoint(mx), Determinant(mx))  # By definition \end{lstlisting}
-	\end{explanation}
-	\section{Multiplication of Two Matrices}
-	The product of two matrices is defined if the number of columns of $A$ is equal to the number of rows of $B$. If $A=[a_{ij}]_{m\cross n}$ and $B=[b_{jk}]_{n\cross p}$, then the $i^{th}$ row of $A$ is $ \begin{bmatrix}
-		a_{i1}& a_{i2}& \cdots & a_{in}
+\end{explanation}
+\section{Multiplication of Two Matrices}
+The product of two matrices is defined if the number of columns of $A$ is equal to the number of rows of $B$. If $A=[a_{ij}]_{m\cross n}$ and $B=[b_{jk}]_{n\cross p}$, then the $i^{th}$ row of $A$ is $ \begin{bmatrix}
+		a_{i1} & a_{i2} & \cdots & a_{in}
 	\end{bmatrix}$ and the $k^{th}$ column of $B$ is $ \begin{bmatrix}
-	b_{1k} \\
-	b_{2k} \\
-	\vdots \\
-	b_{nk}
+		b_{1k} \\
+		b_{2k} \\
+		\vdots \\
+		b_{nk}
 	\end{bmatrix}$, then $c_{ik}=\sum\limits_{j=1}^{n}a_{ij}b_{jk}$. The matrix $C=[c_{ik}]_{m\cross p}$ is the product $A B$. Matrix Multiplication is not commutative but is associative and distributive. Moreover, $AB=0 \nRightarrow A=0 \lor B=0$.\\
-	Here, we will take two approaches to find the product of two matrices.
-	\begin{eg}
-		Find the product of two matrices.
-	\end{eg}
-	\begin{explanation}
-		Here, we will use the exact definition used above. We will loop 3 times.
-		\begin{lstlisting}[language=Python]
+Here, we will take two approaches to find the product of two matrices.
+\begin{eg}
+	Find the product of two matrices.
+\end{eg}
+\begin{explanation}
+	Here, we will use the exact definition used above. We will loop 3 times.
+	\begin{lstlisting}[language=Python]
 def Multiplication(mx1, mx2):
     if len(mx1[0]) != len(mx2):
         return "The matrices are incompatible for multiplication."
@@ -405,20 +405,129 @@ def Multiplication(mx1, mx2):
                 for k in range(len(mx2)):  # Loop through each row of second matrix
                     result[i][j] += mx1[i][k] * mx2[k][j]  # By definition
         return result \end{lstlisting}
-		The following can also be done one line as follows:
-		\begin{lstlisting}[language=Python]
+	The following can also be done one line as follows:
+	\begin{lstlisting}[language=Python]
 def Matrix_Multiplication(mx1,mx2):
     return [[sum([mx1[i][k]*mx2[k][j] for k in range(len(mx1[0]))]) for j in range(len(mx2[0]))] for i in range(len(mx1))] \end{lstlisting}
 	This method is however very slow, as it loops three times. If the matrices are square matrices of the same order (n), then the program takes $O(n*n*n)=O(n^3)$ time.
-	\end{explanation}
-	\subsection{Strassen Algorithm}
-	Strassen Algorithm\footnote{named after the German mathematician Volker Strassen.} is an algorithm for multiplication of two matrices. It is much faster than the traditional multiplication algorithms (like the one mentioned above). However, it only works for square matrices of the order $2^n$, where $n\in \mathrm{N}$.
-	\begin{eg}
-		Using the Strassen Algorithm.
-	\end{eg}
-	\begin{explanation}
-		It works on the principle of divide and conquer. Let us discuss the base case, i.e. for a $2^1\times 2^1$ matrix.
-	\end{explanation}
-	
+\end{explanation}
+\subsection{Strassen Algorithm}
+Strassen Algorithm\footnote{named after the German mathematician Volker Strassen.} is an algorithm for multiplication of two matrices. It is much faster than the traditional multiplication algorithms (like the one mentioned above). However, it only works for square matrices of the order $2^n$, where $n\in \mathrm{N}$.
+\subsubsection{Joining Matrices}
+\begin{eg}
+	Join any two matrices horizontally.
+\end{eg}
+\begin{explanation}
+	\phantom \\
+	\begin{lstlisting}[language=Python]
+def joining_horizontally(a: list, b: list) -> list[list]:
+	n = len(a)
+	new_matrix = null(
+		len(a), len(a[0]) + len(b[0])
+	)  # Null matrix of the same order as the expected output
+	for i in range(n):
+		for j in range(n):  
+			new_matrix[i][j] = a[i][j]  # First matrix
+			new_matrix[i][j + n] = b[i][j]  # Second matrix
+	return new_matrix \end{lstlisting}
+	If the input matrices are $A=\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9
+		\end{bmatrix}$ and $B=\begin{bmatrix}
+			10 & 11 & 12 \\
+			13 & 14 & 15 \\
+			16 & 17 & 18
+		\end{bmatrix}$, then the output matrix is, $\begin{bmatrix}
+			1 & 2 & 3 & 10 & 11 & 12 \\
+			4 & 5 & 6 & 13 & 14 & 15 \\
+			7 & 8 & 9 & 16 & 17 & 18
+		\end{bmatrix}$.
+\end{explanation}
+\begin{eg}
+	Join any two matrices vertically.
+\end{eg}
+\begin{explanation}
+	This is very similar to as seen above.
+	\begin{lstlisting}[language=Python]
+def joining_vertically(a: list[list], b: list[list]) -> list[list]:
+    n = len(a)
+    new_matrix = null(len(a) + len(b), len(a))
+    for i in range(n):
+        for j in range(n):
+            new_matrix[i][j] = a[i][j]  # First matrix
+            new_matrix[i + n][j] = b[i][j]  # Second matrix
+    return new_matrix \end{lstlisting}
+	If the input matrices are $A=\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9
+		\end{bmatrix}$ and $B=\begin{bmatrix}
+			10 & 11 & 12 \\
+			13 & 14 & 15 \\
+			16 & 17 & 18
+		\end{bmatrix}$, then the output matrix is, $\begin{bmatrix}
+			1  & 2  & 3  \\
+			4  & 5  & 6  \\
+			7  & 8  & 9  \\
+			10 & 11 & 12 \\
+			13 & 14 & 15 \\
+			16 & 17 & 18
+		\end{bmatrix}$.
+\end{explanation}
+\begin{theorem}
+	Product of two $2\times 2$ matrices.
+\end{theorem}
+\begin{proof}
+	Let the matrices be:\\
+	\[\begin{bmatrix}a_{11}&a_{12}\\ a_{21}&a_{22}\end{bmatrix} \ \land \ \begin{bmatrix} b_{11}&b_{12}\\b_{21}&b_{22}\end{bmatrix}\]
+	Then the product matrix is given, by,
+	\[\begin{bmatrix} C_{11}& C_{12} \\ C_{21} & C_{22} \end{bmatrix}\]
+	Where, the elements are,
+	\[\begin{split}
+			C_{11}&=a_{11}b_{11}+a_{12}b_{21} \\
+			C_{12}&=a_{11}b_{12}+a_{12}b_{22}\\
+			C_{21}&=a_{21}b_{11}+a_{22}b_{21}\\
+			C_{22}&=a_{21}b_{12}+a_{22}b_{22}
+		\end{split}\]
+	However, this uses 8 multiplications. Strassen found a way to use only 7 multiplications. This is a bit faster as additions are faster than multiplications.
+	For this, we calculate the following 7 products:
+	\[\begin{split}
+		P_1&=(a_{11}+a_{22})(b_{11}+b_{22})\\
+		P_2&=a_{22}(b_{21}-b_{11})\\
+		P_3&=(a_{11}+a_{12})b_{22}\\
+		P_4&=(a_{12}-a_{22})(b_{21}+b_{22})\\
+		P_5&=a_{11}(b_{12}-b_{22})\\
+		P_6&=(a_{21}+a_{22})b_{11}\\
+		P_7&=(a_{11}-a_{21})(b_{11}+b_{12})
+	\end{split}\]
+	Now, calculating the elements,
+	\[\begin{split}
+		C_{11}&=P_1+P_4-P_5-P_7\\
+		C_{12}&=P_3+P_5\\
+		C_{21}&=P_2+P_6\\
+		C_{22}&=P_1+P_5-P_6-P_7
+	\end{split}\]
+	Now, for a bigger matrix, i.e. of the order $n$, the elements $a_{ij}$ will be matrices and the product will be calculated recursively.\\
+	For the time complexity of the previous method,
+
+	We reduce the order of the matrix to $\frac{n}{2}$ in each step and calculate 8 products and we add $n^2$ times, thus,
+	\[T(n)= 8T(\frac{n}{2})+n^2\]
+	On solving the recurrence relation, we get,
+	\[T(n)=O(n^3)\]
+	Which is the same as using 3 loops.\\
+	Now, for the time complexity of Strassen Algorithm. Similarly,
+	\[T(n)=7T(\frac{n}{2})+n^2\]
+	Here, we get,
+	\[T(n)=O(n^{\log_2 7})=O(2^{2.81})\]
+	Which is clearly faster than the above mentioned methods!
+\end{proof}
+\begin{eg}
+	Using the Strassen Algorithm.
+\end{eg}
+\begin{explanation}
+	It works on the principle of divide and conquer. Let us discuss the base case, i.e. for a $2^1\times 2^1$ matrix.
+\end{explanation}
+
 
 \end{document}

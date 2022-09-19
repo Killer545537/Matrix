@@ -38,7 +38,7 @@ mdframed={
 	linecolor=blue, backgroundcolor=blue!5,
 }
 ]{thmbluebox}
-\declaretheorem[style=thmbluebox, numbered=no, name=Example]{eg}
+\declaretheorem[style=thmbluebox, numbered=no, name=Problem]{eg}
 
 
 \declaretheoremstyle[
@@ -50,7 +50,7 @@ mdframed={
 	linecolor=blue, backgroundcolor=blue!1,
 },
 ]{thmexplanationbox}
-\declaretheorem[style=thmexplanationbox, name=Solution]{tmpexplanation}
+\declaretheorem[style=thmexplanationbox, name=Code]{tmpexplanation}
 \newenvironment{explanation}[1][]{\vspace{-10pt}\begin{tmpexplanation}}{\end{tmpexplanation}}
 
 
@@ -62,7 +62,7 @@ mdframed={
 	linecolor=red, backgroundcolor=red!5,
 }
 ]{thmredbox}
-\declaretheorem[style=thmredbox, name=Theorem]{theorem}
+\declaretheorem[style=thmredbox,numbered=no, name=\phantom{.}]{theorem}
 
 \declaretheoremstyle[
 headfont=\bfseries\sffamily\color{red!70!black}, bodyfont=\normalfont,
@@ -74,6 +74,6 @@ mdframed={
 },
 qed=\qedsymbol
 ]{thmproofbox}
-\declaretheorem[style=thmproofbox, name=Proof]{replacementproof}
+\declaretheorem[style=thmproofbox, name=]{replacementproof}
 \renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
 

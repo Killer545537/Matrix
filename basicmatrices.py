@@ -118,3 +118,24 @@ def Matrix_Multiplication(mx1, mx2):
         ]
         for i in range(len(mx1))
     ] #Basically a one-liner, but looks bigger due to formatting
+
+def joining_horizontally(a: list, b: list) -> list[list]:
+    n = len(a)
+    new_matrix = null(
+        len(a), len(a[0]) + len(b[0])
+    )  # Null matrix of the same order as the expected output
+    for i in range(n):
+        for j in range(n):  # Two loops make it slow, better way?
+            new_matrix[i][j] = a[i][j]  # First matrix
+            new_matrix[i][j + n] = b[i][j]  # Second matrix
+    return new_matrix
+
+
+def joining_vertically(a: list[list], b: list[list]) -> list[list]:
+    n = len(a)
+    new_matrix = null(len(a) + len(b), len(a))
+    for i in range(n):
+        for j in range(n):
+            new_matrix[i][j] = a[i][j]  # First matrix
+            new_matrix[i + n][j] = b[i][j]  # Second matrix
+    return new_matrix

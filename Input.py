@@ -58,7 +58,7 @@ def Adjoint(mx):
     return transpose(temp_matrix)
 
 
-def Division(mx, scalar: float):
+def Division(mx, scalar: int | float):
     new_matrix = null(len(mx), len(mx[0]))
     for i in range(len(mx)):
         for j in range(len(mx[0])):
