@@ -1,6 +1,16 @@
 from typing import *
 
 
+def pow_2(num: int | float) -> bool:
+    if num == 0:
+        return False
+    while num != 1:
+        if num % 2 != 0:
+            return False
+        num = num // 2
+    return True
+
+
 def null(rows: int, columns: int) -> list:
     null_matrix = [
         [0 for i in range(columns)] for i in range(rows)
@@ -116,9 +126,30 @@ def joining_vertically(a: list[list], b: list[list]) -> list[list]:
             new_matrix[i][j] = a[i][j]  # First matrix
             new_matrix[i + n][j] = b[i][j]  # Second matrix
     return new_matrix
+def split(mx:list[list]) -> list[list]:
+    if len(mx)==len(mx[0]) and pow_2(len(mx)):
+        n=len(mx)//2
+        return mx[:n][:n]
+
+new_matrix=[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+
+#For a 4*4 matrix
+#How do you do it for an arbitrary matrix???
+
+a=new_matrix[:2]
+b=new_matrix[2:]
+c=[a[i][:2] for i in range(2)]
+d=[a[i][2:] for i in range(2)]
+e=[b[i][:2] for i in range(2)]
+f=[b[i][2:] for i in range(2)]
+
+row_wise(c)
+print("----")
+row_wise(d)
+print("----")
+row_wise(e)
+print("----")
+row_wise(f)
+print("----")
 
 
-n = joining_vertically(
-    [[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
-)
-row_wise(n)
