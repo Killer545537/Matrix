@@ -332,17 +332,17 @@ Thus, the determinant of a matrix is the sum of the elements multiplied with the
 \begin{explanation}
 	Since we have a closed form for the determinant of a $2\times 2$ matrix, we can reduce all determinants\footnote{So, we need to use recursion.} to finding the determinant of a smaller matrix by using cofactors.
 	\begin{lstlisting}[language=Python]
-			def Determinant(mx):
-			# for the base case when the matrix is 2*2
-			if len(mx) == 2:
-				return mx[0][0] * mx[1][1] - mx[0][1] * mx[1][0]
-			determinant = 0
-			# We will only expand along the first row
-			for i in range(len(mx)):
-				determinant += (
-					((-1) ** i) * mx[0][i] * Determinant(Minor_Matrix(mx, 0, i))
-				)  # By definition
-			return determinant \end{lstlisting}
+def Determinant(mx):
+	# for the base case when the matrix is 2*2
+	if len(mx) == 2:
+		return mx[0][0] * mx[1][1] - mx[0][1] * mx[1][0]
+	determinant = 0
+	# We will only expand along the first row
+	for i in range(len(mx)):
+		determinant += (
+			((-1) ** i) * mx[0][i] * Determinant(Minor_Matrix(mx, 0, i))
+		)  # By definition
+	return determinant \end{lstlisting}
 \end{explanation}
 \section{Inverse of a Matrix}
 If $A$ is a square matrix of order $m$, and there exists another square matrix $B$ of the same order $m$, such that $AB=BA=I$, then $B$ is called the inverse matrix of $A$ and it is denoted by $A^{-1}$. In that case $A$ is said to be invertible. The inverse of a matrix if it exists is unique.\
@@ -480,7 +480,7 @@ def joining_vertically(a: list[list], b: list[list]) -> list[list]:
 	Split a given matrix into 4 smaller matrices, given the order of the matrix is of the form $2^n\times 2^n$.
 \end{eg}
 \begin{explanation}
-	
+
 \end{explanation}
 \begin{theorem}
 	Product of two $2\times 2$ matrices.
@@ -500,21 +500,21 @@ def joining_vertically(a: list[list], b: list[list]) -> list[list]:
 	However, this uses 8 multiplications. Strassen found a way to use only 7 multiplications. This is a bit faster as additions are faster than multiplications.
 	For this, we calculate the following 7 products:
 	\[\begin{split}
-		P_1&=(a_{11}+a_{22})(b_{11}+b_{22})\\
-		P_2&=a_{22}(b_{21}-b_{11})\\
-		P_3&=(a_{11}+a_{12})b_{22}\\
-		P_4&=(a_{12}-a_{22})(b_{21}+b_{22})\\
-		P_5&=a_{11}(b_{12}-b_{22})\\
-		P_6&=(a_{21}+a_{22})b_{11}\\
-		P_7&=(a_{11}-a_{21})(b_{11}+b_{12})
-	\end{split}\]
+			P_1&=(a_{11}+a_{22})(b_{11}+b_{22})\\
+			P_2&=a_{22}(b_{21}-b_{11})\\
+			P_3&=(a_{11}+a_{12})b_{22}\\
+			P_4&=(a_{12}-a_{22})(b_{21}+b_{22})\\
+			P_5&=a_{11}(b_{12}-b_{22})\\
+			P_6&=(a_{21}+a_{22})b_{11}\\
+			P_7&=(a_{11}-a_{21})(b_{11}+b_{12})
+		\end{split}\]
 	Now, calculating the elements,
 	\[\begin{split}
-		C_{11}&=P_1+P_4-P_5-P_7\\
-		C_{12}&=P_3+P_5\\
-		C_{21}&=P_2+P_6\\
-		C_{22}&=P_1+P_5-P_6-P_7
-	\end{split}\]
+			C_{11}&=P_1+P_4-P_5-P_7\\
+			C_{12}&=P_3+P_5\\
+			C_{21}&=P_2+P_6\\
+			C_{22}&=P_1+P_5-P_6-P_7
+		\end{split}\]
 	Now, for a bigger matrix, i.e. of the order $n$, the elements $a_{ij}$ will be matrices and the product will be calculated recursively.\\
 	For the time complexity of the previous method,
 

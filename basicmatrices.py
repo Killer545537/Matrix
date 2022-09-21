@@ -37,9 +37,7 @@ def transpose(matrix):
 
 
 def Matrix_Sum(matrix1, matrix2):
-    if len(matrix1) == len(matrix2) and len(matrix1[0]) == len(
-        matrix2[0]
-    ):  # Checking for compatibility for addition
+    if len(matrix1) == len(matrix2) and len(matrix1[0]) == len(matrix2[0]):  # Checking for compatibility for addition
         rows, columns = len(matrix1), len(matrix1[0])
         sum_matrix = null(rows, columns)
         for i in range(rows):

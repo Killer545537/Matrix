@@ -1,5 +1,7 @@
 from typing import *
 
+from basicmatrices import *
+
 
 def pow_2(num: int | float) -> bool:
     if num == 0:
@@ -126,30 +128,43 @@ def joining_vertically(a: list[list], b: list[list]) -> list[list]:
             new_matrix[i][j] = a[i][j]  # First matrix
             new_matrix[i + n][j] = b[i][j]  # Second matrix
     return new_matrix
-def split(mx:list[list]) -> list[list]:
-    if len(mx)==len(mx[0]) and pow_2(len(mx)):
-        n=len(mx)//2
-        return mx[:n][:n]
 
-new_matrix=[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
 
-#For a 4*4 matrix
-#How do you do it for an arbitrary matrix???
+def split(mx: list[list]) -> list[list]:
+    if len(mx) == len(mx[0]) and pow_2(len(mx)):
+        n = len(mx) // 2
+        a = mx[:n]
+        b = mx[n:]
+        a_11 = [a[i][:n] for i in range(n)]
+        a_12 = [a[i][n:] for i in range(n)]
+        a_13 = [b[i][:n] for i in range(n)]
+        a_14 = [b[i][n:] for i in range(n)]
+    return a_11, a_12, a_13, a_14
 
-a=new_matrix[:2]
-b=new_matrix[2:]
-c=[a[i][:2] for i in range(2)]
-d=[a[i][2:] for i in range(2)]
-e=[b[i][:2] for i in range(2)]
-f=[b[i][2:] for i in range(2)]
+a,b,c,d=split([[1,2],[3,4]])
+print(a)
+print(b)
+print(c)
+print(d)
 
-row_wise(c)
-print("----")
-row_wise(d)
-print("----")
-row_wise(e)
-print("----")
-row_wise(f)
-print("----")
+def strassen(mx1:list[list],mx2:list[list]) -> list[list]:
+    if len(mx1)==1:
+        return mx1[0][0]*mx2[0][0]
+    a_11,a_12,a_21,a_22=split(mx1)
+    b_11,b_12,b_21,b_22=split(mx2)
+    p1=strassen(Matrix_Sum(a_11,a_22),Matrix_Sum(b_11,b_22))
+    p2=strassen(a_22,Matrix_Difference(b_21,b_11))
+    p3=strassen(Matrix_Sum(a_11,a_12),b_22)
+    p4=strassen(Matrix_Difference(a_12,a_22),Matrix_Sum(b_21,b_22))
+    p5=strassen(a_11,Matrix_Difference(b_12,b_22))
+    p6=strassen(Matrix_Sum(a_21,a_22),b_11)
+    p7=strassen(Matrix_Difference(a_11,a_21),Matrix_Sum(b_11,b_21))
+    c_11=Matrix_Difference(Matrix_Difference(Matrix_Sum(p1,p2),p3),p4)
+    c_12=Matrix_Sum(p2,p6)
+    c_21=Matrix_Sum(p2,p6)
+    c_22=Matrix_Difference(Matrix_Difference(Matrix_Sum(p1,p5),p6),p7)
+    answer=joining_vertically(joining_horizontally(c_11,c_12),joining_horizontally(c_21,c_22))
+    return answer
 
+strassen([[1,2],[3,4]],[[1,2],[3,4]])
 
