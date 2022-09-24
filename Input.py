@@ -120,13 +120,13 @@ def joining_horizontally(a: list, b: list) -> list[list]:
     return new_matrix
 
 
-def joining_vertically(a: list[list], b: list[list]) -> list[list]:
-    n = len(a)
-    new_matrix = null(len(a) + len(b), len(a))
-    for i in range(n):
-        for j in range(n):
-            new_matrix[i][j] = a[i][j]  # First matrix
-            new_matrix[i + n][j] = b[i][j]  # Second matrix
+def joining_vertically(mx1: list[list], mx2: list[list]) -> list[list]:
+    n = len(mx1)
+    new_matrix = []  # Empty list
+    for i in mx1:
+        new_matrix.append(i)  # First the first matrix
+    for j in mx2:
+        new_matrix.append(j)  # Now the second matrix
     return new_matrix
 
 
@@ -141,30 +141,34 @@ def split(mx: list[list]) -> list[list]:
         a_14 = [b[i][n:] for i in range(n)]
     return a_11, a_12, a_13, a_14
 
-a,b,c,d=split([[1,2],[3,4]])
-print(a)
-print(b)
-print(c)
-print(d)
 
-def strassen(mx1:list[list],mx2:list[list]) -> list[list]:
-    if len(mx1)==1:
-        return mx1[0][0]*mx2[0][0]
-    a_11,a_12,a_21,a_22=split(mx1)
-    b_11,b_12,b_21,b_22=split(mx2)
-    p1=strassen(Matrix_Sum(a_11,a_22),Matrix_Sum(b_11,b_22))
-    p2=strassen(a_22,Matrix_Difference(b_21,b_11))
-    p3=strassen(Matrix_Sum(a_11,a_12),b_22)
-    p4=strassen(Matrix_Difference(a_12,a_22),Matrix_Sum(b_21,b_22))
-    p5=strassen(a_11,Matrix_Difference(b_12,b_22))
-    p6=strassen(Matrix_Sum(a_21,a_22),b_11)
-    p7=strassen(Matrix_Difference(a_11,a_21),Matrix_Sum(b_11,b_21))
-    c_11=Matrix_Difference(Matrix_Difference(Matrix_Sum(p1,p2),p3),p4)
-    c_12=Matrix_Sum(p2,p6)
-    c_21=Matrix_Sum(p2,p6)
-    c_22=Matrix_Difference(Matrix_Difference(Matrix_Sum(p1,p5),p6),p7)
-    answer=joining_vertically(joining_horizontally(c_11,c_12),joining_horizontally(c_21,c_22))
-    return answer
+def strassen(mx1: list[list], mx2: list[list]) -> list[list]:
+    if len(mx1) == 1:
+        return [[mx1[0][0] * mx2[0][0]]]
+    a_11, a_12, a_21, a_22 = split(mx1)
+    b_11, b_12, b_21, b_22 = split(mx2)
+    p_1, p_2, p_3, p_4, p_5, p_6, p_7 = (
+        strassen(Matrix_Sum(a_11, a_22), Matrix_Sum(b_11, b_22)),
+        strassen(a_22, Matrix_Difference(b_21, b_11)),
+        strassen(Matrix_Sum(a_11, a_12), b_22),
+        strassen(Matrix_Difference(a_12, a_22), Matrix_Sum(b_21, b_22)),
+        strassen(a_11, Matrix_Difference(b_12, b_22)),
+        strassen(Matrix_Sum(a_21, a_22), b_11),
+        strassen(Matrix_Difference(a_11, a_21), Matrix_Sum(b_11, b_12)),
+    )  # Exactly from the theory
+    c_11, c_12, c_21, c_22 = (
+        Matrix_Difference(Matrix_Sum(Matrix_Sum(p_1, p_2), p_4), p_3),
+        Matrix_Sum(p_3, p_5),
+        Matrix_Sum(p_2, p_6),
+        Matrix_Difference(Matrix_Sum(p_1, p_5), Matrix_Sum(p_6, p_7)),
+    )  # Exactly from the theory
+    return joining_vertically(
+        joining_horizontally(c_11, c_12), joining_horizontally(c_21, c_22)
+    )
+ 
+print(strassen([[1,2],[3,4]],[[1,2],[3,4]]))
 
-strassen([[1,2],[3,4]],[[1,2],[3,4]])
+m1=[[5,7,9,10],[2,3,3,8],[8,10,2,3],[3,3,4,8]]
+m2=[[3,10,12,18],[12,1,4,9],[9,10,12,2],[3,12,4,10]]
 
+row_wise(strassen(m1,m2))

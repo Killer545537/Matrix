@@ -131,9 +131,9 @@ def joining_horizontally(a: list, b: list) -> list[list]:
 
 def joining_vertically(a: list[list], b: list[list]) -> list[list]:
     n = len(a)
-    new_matrix = null(len(a) + len(b), len(a))
-    for i in range(n):
-        for j in range(n):
-            new_matrix[i][j] = a[i][j]  # First matrix
-            new_matrix[i + n][j] = b[i][j]  # Second matrix
+    new_matrix = []
+    for i in a:
+        new_matrix.append(i)
+    for j in b:
+        new_matrix.append(j)
     return new_matrix

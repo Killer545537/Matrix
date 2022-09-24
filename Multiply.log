@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.3.21)  21 SEP 2022 19:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.3.21)  24 SEP 2022 00:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -820,7 +820,7 @@ Package caption Info: Standard document class detected.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 )
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=blue, backgroundcolor=blue!5, ')
+Package thmtools Info: Key `mdframed' (with value ` linewidth=1pt, rightline=false, topline=false, bottomline=false, linecolor=blue, backgroundcolor=blue!5, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=thmbluebox' on input line 40.
@@ -832,11 +832,11 @@ Package thmtools Info: Key `numbered' (with value `no')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=thmexplanationbox' on input line 52.
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=blue, backgroundcolor=blue!1, ')
+Package thmtools Info: Key `mdframed' (with value ` linewidth=1pt, rightline=false, topline=false, bottomline=false, linecolor=blue, backgroundcolor=blue!1, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=thmexplanationbox' on input line 52.
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=red, backgroundcolor=red!5, ')
+Package thmtools Info: Key `mdframed' (with value ` linewidth=1pt, rightline=false, topline=false, bottomline=false, linecolor=red, backgroundcolor=red!5, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=thmredbox' on input line 64.
@@ -844,7 +844,7 @@ Package thmtools Info: Key `numbered' (with value `no')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=thmproofbox' on input line 76.
-Package thmtools Info: Key `mdframed' (with value ` linewidth=2pt, rightline=false, topline=false, bottomline=false, linecolor=red, backgroundcolor=red!2, ')
+Package thmtools Info: Key `mdframed' (with value ` linewidth=1pt, rightline=false, topline=false, bottomline=false, linecolor=red, backgroundcolor=red!2, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=thmproofbox' on input line 76.
@@ -1098,35 +1098,38 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 483.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 486.
+(mdframed)              on input line 497.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 489.
+(mdframed)              on input line 500.
 
-Underfull \hbox (badness 10000) in paragraph at lines 489--490
+Underfull \hbox (badness 10000) in paragraph at lines 500--501
 
  []
 
 [7]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 533.
+(mdframed)              on input line 544.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 536.
- [8] (Multiply.aux) ) 
+(mdframed)              on input line 547.
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 572.
+ [8] [9] (Multiply.aux) ) 
 Here is how much of TeX's memory you used:
- 41204 strings out of 478582
- 999147 string characters out of 2854159
- 1892694 words of memory out of 3000000
- 58538 multiletter control sequences out of 15000+600000
- 483887 words of font info for 123 fonts, out of 8000000 for 9000
+ 41226 strings out of 478582
+ 999375 string characters out of 2854159
+ 1957817 words of memory out of 3000000
+ 58564 multiletter control sequences out of 15000+600000
+ 483785 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,16n,120p,1035b,1509s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 89i,16n,120p,1035b,1511s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Multiply.pdf (11 pages, 279919 bytes).
+Output written on Multiply.pdf (12 pages, 281247 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
+ 180 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  35997 words of extra memory for PDF output out of 42996 (max. 10000000)
 
