@@ -1,0 +1,15 @@
+import pickle
+
+f=open("new.dat", "wb+")
+
+empty=[]
+while True:
+    try:
+        row=pickle.load(f)
+        print(row)
+    except EOFError:
+        break
+
+
+
+f.close()

@@ -1,3 +1,13 @@
+def pow_2(num: int | float) -> bool:  # Used later in the file
+    if num == 0:
+        return False
+    while num != 1:
+        if num % 2 != 0:
+            return False
+        num = num // 2
+    return True
+
+
 def null(rows, columns):
     null_matrix = [
         [0 for i in range(columns)] for i in range(rows)
@@ -37,7 +47,9 @@ def transpose(matrix):
 
 
 def Matrix_Sum(matrix1, matrix2):
-    if len(matrix1) == len(matrix2) and len(matrix1[0]) == len(matrix2[0]):  # Checking for compatibility for addition
+    if len(matrix1) == len(matrix2) and len(matrix1[0]) == len(
+        matrix2[0]
+    ):  # Checking for compatibility for addition
         rows, columns = len(matrix1), len(matrix1[0])
         sum_matrix = null(rows, columns)
         for i in range(rows):
@@ -115,7 +127,8 @@ def Matrix_Multiplication(mx1, mx2):
             for j in range(len(mx2[0]))
         ]
         for i in range(len(mx1))
-    ] #Basically a one-liner, but looks bigger due to formatting
+    ]  # Basically a one-liner, but looks bigger due to formatting
+
 
 def joining_horizontally(a: list, b: list) -> list[list]:
     n = len(a)
@@ -137,3 +150,40 @@ def joining_vertically(a: list[list], b: list[list]) -> list[list]:
     for j in b:
         new_matrix.append(j)
     return new_matrix
+
+
+def split(mx: list[list]) -> list[list]:
+    if len(mx) == len(mx[0]) and pow_2(len(mx)):
+        n = len(mx) // 2
+        a = mx[:n]
+        b = mx[n:]
+        a_11 = [a[i][:n] for i in range(n)]
+        a_12 = [a[i][n:] for i in range(n)]
+        a_13 = [b[i][:n] for i in range(n)]
+        a_14 = [b[i][n:] for i in range(n)]
+    return a_11, a_12, a_13, a_14
+
+
+def strassen(mx1: list[list], mx2: list[list]) -> list[list]:
+    if len(mx1) == 1:
+        return [[mx1[0][0] * mx2[0][0]]]
+    a_11, a_12, a_21, a_22 = split(mx1)
+    b_11, b_12, b_21, b_22 = split(mx2)
+    p_1, p_2, p_3, p_4, p_5, p_6, p_7 = (
+        strassen(Matrix_Sum(a_11, a_22), Matrix_Sum(b_11, b_22)),
+        strassen(a_22, Matrix_Difference(b_21, b_11)),
+        strassen(Matrix_Sum(a_11, a_12), b_22),
+        strassen(Matrix_Difference(a_12, a_22), Matrix_Sum(b_21, b_22)),
+        strassen(a_11, Matrix_Difference(b_12, b_22)),
+        strassen(Matrix_Sum(a_21, a_22), b_11),
+        strassen(Matrix_Difference(a_11, a_21), Matrix_Sum(b_11, b_12)),
+    )  # Exactly from the theory
+    c_11, c_12, c_21, c_22 = (
+        Matrix_Difference(Matrix_Sum(Matrix_Sum(p_1, p_2), p_4), p_3),
+        Matrix_Sum(p_3, p_5),
+        Matrix_Sum(p_2, p_6),
+        Matrix_Difference(Matrix_Sum(p_1, p_5), Matrix_Sum(p_6, p_7)),
+    )  # Exactly from the theory
+    return joining_vertically(
+        joining_horizontally(c_11, c_12), joining_horizontally(c_21, c_22)
+    )

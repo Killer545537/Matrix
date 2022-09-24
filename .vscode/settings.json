@@ -1,3 +1,39 @@
 {
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.aux": true,
+        "**/.fdb_latexmk": true,
+        "**/.fls": true,
+        "**/.log": true,
+        "Multiply.aux": true,
+        "Multiply.fdb_latexmk": true,
+        "Multiply.fls": true,
+        "Multiply.log": true,
+        "README.md": true,
+        "tempCodeRunnerFile.py": true,
+        "tempCodeRunnerFile.python": true,
+        "Multiply.toc": true,
+        ".vscode": true,
+        "__pycache__": true,
+        "Multiply.synctex.gz": true
+    },
+    "hide-files.files": [
+        "Multiply.aux",
+        "Multiply.fdb_latexmk",
+        "Multiply.fls",
+        "Multiply.log",
+        "README.md",
+        "tempCodeRunnerFile.py",
+        "tempCodeRunnerFile.python",
+        "Multiply.toc",
+        ".vscode",
+        "__pycache__",
+        "Multiply.synctex.gz"
+    ]
 }
