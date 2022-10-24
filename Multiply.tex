@@ -572,5 +572,112 @@ def strassen(mx1: list[list], mx2: list[list]) -> list[list]:
 \end{explanation}
 
 \section{Binary Files}
+A binary file is one which stores the data in the form of stream of bytes. It contains information in the same format in which the information is held in memory.
+\subsection{Opening and Closing Binary Files}
+\begin{eg}
+	Open a binary file in read and write mode and read and append mode.
+\end{eg}
+\begin{explanation} \phantom{}\\
+	\begin{lstlisting}[language=Python]
+<filehandle>=open("<filename.dat", "wb+") # Opens in write and read mode
+<filehandle>=open("<filename.dat", "ab+") # Opens in append and read mode \end{lstlisting}
+	Writing on a file opened with "wb+" will remove the contents previously stored and overwrite the data. But. files opened with "ab+" will append data without overwriting the contents of the file.\\
+	To close a file,
+	\begin{lstlisting}[language=Python]
+<filehandle>.close()\end{lstlisting}
+\end{explanation}
+To work with binary files we will import a module "pickle". This module is used for serialization and and de-serialization of byte stream.
+\subsection{Writing in Binary files}
+\begin{eg}
+	Store a matrix in a binary file.
+\end{eg}
+\begin{explanation}
+	Consider a matrix $A=\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 5 & 6
+		\end{bmatrix}$ to be stored in a binary file named, "matrix.dat",
+	\begin{lstlisting}[language=Python]
+import pickle
+f=open("matrix.dat","wb+")
+matrix=matrix=[[1,2,3],[3,4,5],[6,7,8]]
+for i in matrix:
+		pickle.dump(i,f)
+f.close() \end{lstlisting}
 
+We can do the same without needing to close the file manually by,
+\begin{lstlisting}[language=Python]
+import pickle
+f=open("new.dat", "wb")
+matrix=[[1,2,3],[3,10,5],[6,7,8]]
+with open("new.dat", "wb+"):
+    for i in matrix:
+        pickle.dump(i,f)\end{lstlisting}
+To add the data (append) to the binary file, we can use "ab+" in place of "wb+".
+\end{explanation}
+\subsection{Reading from a Binary File}
+\begin{eg}
+	Read data from a pre-existing binary file.
+\end{eg}
+\begin{explanation}
+	Consider the binary file created above,
+	\begin{lstlisting}[language=Python]
+import pickle
+from basicmatrices import *
+f = open("new.dat", "rb")
+while True:
+    try:
+        row = pickle.load(f)
+        print(row)
+    except EOFError:  # As Python raises an exception if we try to read after the file is over
+        break \end{lstlisting}
+\end{explanation}
+\section{Solving System of Linear Equations}
+Consider the following system of equations (non-homogenous\footnote{with a unique solution}),
+\[\begin{split}
+	a_{11}x_{1}+a_{12}x_2+\cdots +a_{1n}x_n&=b_1\\
+	a_{21}x_{1}+a_{22}x_2+\cdots +a_{2n}x_n&=b_2\\
+	\vdots  & \\
+	a_{m1}x_{1}+a_{m2}x_2+\cdots +a_{mn}x_n&=b_m
+\end{split}\]
+This can be represented as,
+\[Ax=B\]
+Where,
+\[A=\begin{bmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n}\\
+	a_{21} & a_{22} & \cdots & a_{2n}\\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}_{m\times n} \ \land \ x=\begin{bmatrix}
+	x_1\\
+	x_2\\
+	\vdots\\
+	x_n
+\end{bmatrix}_{n\times 1} \ \land \ B=\begin{bmatrix}
+	b_{1}\\
+	b_2\\
+	\vdots\\
+	b_m
+\end{bmatrix}_{m\times 1}\]
+If $m=n$, i.e. $A$ is a square matrix, then we can find teh solution of the system of linear equations by,
+\[\begin{split}
+	Ax&=B\\
+	\therefore x&=A^{-1}B
+\end{split}\] 
+We can also check the consistency of the system of linear equation by checking the determinant of the matrix $A$.
+\begin{itemize}
+	\item If the determinant of the matrix is 0, then the system is inconsistent.
+	\item Else the system is consistent and has a unique solution.
+\end{itemize}
+\begin{eg}
+	Find the solution of the system of equations given the coefficients of the variables and the constant terms separately.
+\end{eg}
+\begin{explanation}
+	Using the above theory,
+	\begin{lstlisting}[language=Python]
+def solution(A:list[list], B:list[list])-> list[list]|int:
+    if Determinant(A)==0:
+        return 0
+    else:
+        return Matrix_Multiplication(Inverse(A),B)\end{lstlisting}
+\end{explanation}
 \end{document}

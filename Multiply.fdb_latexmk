@@ -1,6 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1664042846 "c:/Users/sraja/Desktop/Matrix/Multiply.tex" "Multiply.pdf" "Multiply" 1664042850
+["pdflatex"] 1666297733 "c:/Users/sraja/Desktop/Matrix/Multiply.tex" "Multiply.pdf" "Multiply" 1666297736
   "C.tex" 1663960748 2392 6bcc43d60fa1742bf70e023f5cbfe187 ""
+  "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1233951848 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1233951848 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -51,6 +52,7 @@
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1247596667 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb" 1247596666 24287 6b803fa9eb1ddff9112e00519b09dd9e ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb" 1247596671 30068 eae4ba75635647d82fb0b7d7bccc4748 ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1247596673 31764 459c573c03a4949a528c2cc7f557e217 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Program Files/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Program Files/MiKTeX/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -242,6 +244,7 @@
   "C:/Program Files/MiKTeX/tex/latex/xcolor/xcolor.sty" 1636284872 56029 3f7889dab51d620aa43177c391b7b190 ""
   "C:/Program Files/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1623005690 4902 efb3d66683a2da2a232f71e3a571a899 ""
   "C:/Users/sraja/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1662144434 82665 3eb0bcc9d631fc78d736d6e53fe0e9b2 ""
+  "C:/Users/sraja/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1646828439 11548 d398c61f3ce1e04b3e5ba827f092cd7e ""
   "C:/Users/sraja/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1646828433 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/sraja/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs5.tfm" 1646828436 684 3a51bd4fd9600428d5264cf25f04bb9a ""
   "C:/Users/sraja/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs7.tfm" 1646828434 692 1b6510779f0f05e9cbf03e0f6c8361e6 ""
@@ -299,10 +302,10 @@
   "C:/Users/sraja/AppData/Roaming/MiKTeX/tex/latex/varwidth/varwidth.sty" 1238469540 10894 d359a13923460b2a73d4312d613554c8 ""
   "C:/Users/sraja/AppData/Roaming/MiKTeX/tex/latex/zref/zref-abspage.sty" 1602241898 2275 d29aca6fd67823551cb07584e3681d5d ""
   "C:/Users/sraja/AppData/Roaming/MiKTeX/tex/latex/zref/zref-base.sty" 1602241898 20688 beaddf14d96104d4bf016523be5395c5 ""
-  "Multiply.aux" 1664042849 8672 102116a9c031d5993165fb55e67c6372 "pdflatex"
-  "Multiply.tex" 1664042845 22546 d776861a9a916ecdde86c42b4343b3d5 ""
-  "Multiply.toc" 1664042849 1320 d2ce41f1f27e99bdd3250c1557462191 "pdflatex"
-  "c:/Users/sraja/Desktop/Matrix/Multiply.tex" 1664042845 22546 d776861a9a916ecdde86c42b4343b3d5 ""
+  "Multiply.aux" 1666297736 10647 1dd166d8ee93dd5d1fc6d12df974144d "pdflatex"
+  "Multiply.tex" 1666297728 26514 86669f8e31d95eb380effde75eec3b41 ""
+  "Multiply.toc" 1666297736 1639 c1199f5a0092eb73300cd4f1ffc88813 "pdflatex"
+  "c:/Users/sraja/Desktop/Matrix/Multiply.tex" 1666297728 26514 86669f8e31d95eb380effde75eec3b41 ""
   (generated)
   "Multiply.aux"
   "Multiply.log"
