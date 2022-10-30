@@ -1,5 +1,7 @@
 import pickle
 from typing import *
+
+
 def pow_2(num: int | float) -> bool:  # Used later in the file
     if num == 0:
         return False
@@ -10,21 +12,21 @@ def pow_2(num: int | float) -> bool:  # Used later in the file
     return True
 
 
-def null(rows:int, columns:int)->list[list[int]]:
+def null(rows: int, columns: int) -> list[list[int]]:
     null_matrix = [
         [0 for i in range(columns)] for i in range(rows)
     ]  # loop over columns then over rows
     return null_matrix
 
 
-def row_wise(matrix:list[list]):
+def row_wise(matrix: list[list]):
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
             print(matrix[i][j], end="\t")
         print("\n")
 
 
-def upper_triangular(matrix:list[list])-> list[list]:
+def upper_triangular(matrix: list[list]) -> list[list]:
     rows = len(matrix)
     columns = len(matrix[0])
     upper_matrix = null(rows, columns)  # null matrix
@@ -37,7 +39,7 @@ def upper_triangular(matrix:list[list])-> list[list]:
     return upper_matrix
 
 
-def transpose(matrix:list[list])->list[list]:
+def transpose(matrix: list[list]) -> list[list]:
     rows = len(matrix)
     columns = len(matrix[0])
     transpose_matrix = null(columns, rows)  # null matrix
@@ -48,7 +50,7 @@ def transpose(matrix:list[list])->list[list]:
     return transpose_matrix
 
 
-def Matrix_Sum(matrix1:list[list], matrix2:list[list])-> list[list]|int:
+def Matrix_Sum(matrix1: list[list], matrix2: list[list]) -> list[list] | int:
     if len(matrix1) == len(matrix2) and len(matrix1[0]) == len(
         matrix2[0]
     ):  # Checking for compatibility for addition
@@ -62,7 +64,7 @@ def Matrix_Sum(matrix1:list[list], matrix2:list[list])-> list[list]|int:
         return -1
 
 
-def Matrix_Difference(matrix1:list[list], matrix2:list[list])->list[list]|int:
+def Matrix_Difference(matrix1: list[list], matrix2: list[list]) -> list[list] | int:
     # The program is matrix1-matrix2, since subtraction is not commutative
     matrix2_new = null(len(matrix2), len(matrix2[0]))
     for i in range(len(matrix2)):
@@ -75,7 +77,7 @@ def Matrix_Difference(matrix1:list[list], matrix2:list[list])->list[list]|int:
     )  # From the definition of difference of two matrices
 
 
-def Division(mx:list[list], scalar: float)->list[list]:
+def Division(mx: list[list], scalar: float) -> list[list]:
     new_matrix = null(len(mx), len(mx[0]))
     for i in range(len(mx)):
         for j in range(len(mx[0])):
@@ -83,11 +85,11 @@ def Division(mx:list[list], scalar: float)->list[list]:
     return new_matrix
 
 
-def Minor_Matrix(mx:list[list], r:int, c:int)-> list[list]:
+def Minor_Matrix(mx: list[list], r: int, c: int) -> list[list]:
     return [row[:c] + row[c + 1 :] for row in (mx[:r] + mx[r + 1 :])]
 
 
-def Determinant(mx:list[list])-> float:
+def Determinant(mx: list[list]) -> float:
     # for an even smaller case
     if len(mx) == 1:
         return mx[0][0]
@@ -103,7 +105,7 @@ def Determinant(mx:list[list])-> float:
     return determinant
 
 
-def Adjoint(mx:list[list])->list[list]:
+def Adjoint(mx: list[list]) -> list[list]:
     temp_matrix = []  # Empty matrix before the transpose
     for i in range(len(mx)):
         row = []  # Initialise each row
@@ -115,14 +117,14 @@ def Adjoint(mx:list[list])->list[list]:
     return transpose(temp_matrix)
 
 
-def Inverse(mx:list[list])->list[list]|None:
+def Inverse(mx: list[list]) -> list[list] | None:
     if Determinant(mx) == 0:
         return None  # The inverse does not exist in this case
     else:
         return Division(Adjoint(mx), Determinant(mx))  # By definition
 
 
-def Matrix_Multiplication(mx1:list[list], mx2:list[list])->list[list]:
+def Matrix_Multiplication(mx1: list[list], mx2: list[list]) -> list[list]:
     return [
         [
             sum([mx1[i][k] * mx2[k][j] for k in range(len(mx1[0]))])
@@ -132,24 +134,24 @@ def Matrix_Multiplication(mx1:list[list], mx2:list[list])->list[list]:
     ]  # Basically a one-liner, but looks bigger due to formatting
 
 
-def joining_horizontally(a: list[list], b: list[list]) -> list[list]:
-    n = len(a)
-    new_matrix = null(
-        len(a), len(a[0]) + len(b[0])
-    )  # Null matrix of the same order as the expected output
-    for i in range(n):
-        for j in range(n):  # Two loops make it slow, better way?
-            new_matrix[i][j] = a[i][j]  # First matrix
-            new_matrix[i][j + n] = b[i][j]  # Second matrix
-    return new_matrix
+def joining_horizontally(mx1: list[list], mx2: list[list]) -> list[list]:
+    a_matrix = null(len(mx1), len(mx1[0]) + len(mx2[0]))
+
+    for i in range(len(mx1)):
+        for j in range(len(mx1[0])):
+            a_matrix[i][j] = mx1[i][j]
+    for i in range(len(mx2)):
+        for j in range(len(mx2[0])):
+            a_matrix[i][j + len(mx1[0])] = mx2[i][j]
+    return a_matrix
 
 
-def joining_vertically(a: list[list], b: list[list]) -> list[list]:
-    n = len(a)
+def joining_vertically(mx1: list[list], mx2: list[list]) -> list[list]:
+    n = len(mx1)
     new_matrix = []
-    for i in a:
+    for i in mx1:
         new_matrix.append(i)
-    for j in b:
+    for j in mx2:
         new_matrix.append(j)
     return new_matrix
 
@@ -166,7 +168,7 @@ def split(mx: list[list]) -> Any:
     return a_11, a_12, a_13, a_14
 
 
-def strassen(mx1: list[list], mx2: list[list]|int) -> list[list]:
+def strassen(mx1: list[list], mx2: list[list] | int) -> list[list]:
     if len(mx1) == 1:
         return [[mx1[0][0] * mx2[0][0]]]
     a_11, a_12, a_21, a_22 = split(mx1)
