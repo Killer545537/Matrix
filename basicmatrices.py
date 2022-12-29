@@ -12,24 +12,24 @@ def pow_2(num: int | float) -> bool:  # Used later in the file
     return True
 
 
-def null(rows: int, columns: int) -> list[list[int]]:
+def null(rows: int, columns: int) -> list[list[int|float]]:
     null_matrix = [
-        [0 for i in range(columns)] for i in range(rows)
+        [0.0 for i in range(columns)] for i in range(rows)
     ]  # loop over columns then over rows
     return null_matrix
 
 
-def row_wise(matrix: list[list]):
+def row_wise(matrix: list[list[int|float]]):
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
             print(matrix[i][j], end="\t")
         print("\n")
 
 
-def upper_triangular(matrix: list[list]) -> list[list]:
+def upper_triangular(matrix: list[list[int|float]]) -> list[list[int|float]]:
     rows = len(matrix)
     columns = len(matrix[0])
-    upper_matrix = null(rows, columns)  # null matrix
+    upper_matrix:list[list[int|float]] = null(rows, columns)  # null matrix
     for i in range(rows):
         for j in range(columns):
             if i >= j:
@@ -50,7 +50,7 @@ def transpose(matrix: list[list]) -> list[list]:
     return transpose_matrix
 
 
-def Matrix_Sum(matrix1: list[list], matrix2: list[list]) -> list[list] | int:
+def Matrix_Sum(matrix1: list[list[int|float]], matrix2: list[list[int|float]]) -> list[list] | int:
     if len(matrix1) == len(matrix2) and len(matrix1[0]) == len(
         matrix2[0]
     ):  # Checking for compatibility for addition
@@ -157,6 +157,8 @@ def joining_vertically(mx1: list[list], mx2: list[list]) -> list[list]:
 
 
 def split(mx: list[list]) -> Any:
+
+    a_11,a_12,a_13,a_14=None,None,None,None
     if len(mx) == len(mx[0]) and pow_2(len(mx)):
         n = len(mx) // 2
         a = mx[:n]
@@ -168,7 +170,7 @@ def split(mx: list[list]) -> Any:
     return a_11, a_12, a_13, a_14
 
 
-def strassen(mx1: list[list], mx2: list[list] | int) -> list[list]:
+def strassen(mx1: list[list[int|float]]|int, mx2: list[list[int|float]] | int) -> list[list]:
     if len(mx1) == 1:
         return [[mx1[0][0] * mx2[0][0]]]
     a_11, a_12, a_21, a_22 = split(mx1)

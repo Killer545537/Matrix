@@ -1,7 +1,7 @@
 import pickle
 from basicmatrices import *
 
-f = open("new.dat", "rb")
+f = open("binary1.dat", "rb")
 
 empty = []
 while True:

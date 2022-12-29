@@ -1,13 +1,24 @@
 import pickle
-from typing import *
+import typing
 
-f=open("new.dat", "wb")
+f1=open("binary1.dat", "ab+")
 
 matrix=[[1,2,3],[4,5,6]]
-def writing(filename:BinaryIO,mx1:list[list])-> None:
-    f=open(filename,"wb")
-    for i in mx1:
-        pickle.dump(i,filename)
-    f.close()
 
-writing("new.dat", matrix)
+def writing(mx:list[list])-> None:
+    for i in mx:
+        pickle.dump(i,f1)
+
+def view()-> list[list]:
+    empty=[]
+    while True:
+        try:
+            row=pickle.load(f1)
+            empty.append(row)
+        except EOFError:
+            break
+    return empty
+
+writing(matrix)
+
+print(pickle.load(f1))

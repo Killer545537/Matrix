@@ -7,16 +7,17 @@
 \contentsline {subsection}{\numberline {1.6}Subtraction of Two Matrices}{4}{}%
 \contentsline {section}{\numberline {2}Division of a Matrix by a Scalar}{4}{}%
 \contentsline {subsection}{\numberline {2.1}Minor Matrix of an Element}{4}{}%
-\contentsline {subsection}{\numberline {2.2}Determinant of a Matrix}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Determinant of a Matrix}{5}{}%
 \contentsline {subsubsection}{\numberline {2.2.1}Cofactors}{5}{}%
 \contentsline {section}{\numberline {3}Inverse of a Matrix}{5}{}%
 \contentsline {subsection}{\numberline {3.1}Adjoint of a Matrix}{5}{}%
 \contentsline {section}{\numberline {4}Multiplication of Two Matrices}{6}{}%
-\contentsline {subsection}{\numberline {4.1}Strassen Algorithm}{6}{}%
-\contentsline {subsubsection}{\numberline {4.1.1}Joining Matrices}{6}{}%
+\contentsline {subsection}{\numberline {4.1}Strassen Algorithm}{7}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Joining Matrices}{7}{}%
 \contentsline {subsection}{\numberline {4.2}Splitting a Matrix into 4 Smaller Matrices}{7}{}%
 \contentsline {section}{\numberline {5}Binary Files}{9}{}%
 \contentsline {subsection}{\numberline {5.1}Opening and Closing Binary Files}{9}{}%
 \contentsline {subsection}{\numberline {5.2}Writing in Binary files}{9}{}%
-\contentsline {subsection}{\numberline {5.3}Reading from a Binary File}{9}{}%
+\contentsline {subsection}{\numberline {5.3}Reading from a Binary File}{10}{}%
 \contentsline {section}{\numberline {6}Solving System of Linear Equations}{10}{}%
+\contentsline {section}{\numberline {7}Bibliography}{11}{}%

@@ -36,7 +36,20 @@
 \end{titlepage}
 \tableofcontents
 \newpage
+\section*{Certificate}
+This is to certify that Lavanya Sharma, Sam Saini and Srijan Mahajan of Class 12-A have prepared the project on "\textbf{Matrices}". The project is found worthy of acceptance as final project report for the subject Computer Science. He has prepared the report under my guidance.
+\vfill
+\begin{flushright}
+	(Ms. Namita Chuttani)\\
+	PGT (Computer Science)\\
+	The Indian Heights School\\
+	Sector-22, Dwarka, Delhi-77
+\end{flushright}
+\newpage
+\section*{Acknowledgement}
+We would like to express our sincerest gratitude to our beloved teacher, Ms. Namita Chuttani (PGT Computer Science) for her guidance and motivation throughout. We would also thank school coordinators Mr. Rajesh Kumar Jha and Ms. Hema Raghav and the school principal, Ms. Archana Narayan for always being a beacon of support and giving us the opportunity to complete the project. 
 
+The project would not have been possible without the inputs of our friends, parents, and the participants of the survey without which the project could not have been completed on time. 
 \begin{abstract}
 	Matrices are a part of Linear Algebra which is used everywhere in Computer Science. It is used in computer graphics to create 2D/3D models, animations, etc. It is used in cryptography (making data secure) by using matrices to store data and a key matrix to encrypt it and its inverse to decrypt it. In this project we will look at operations on matrices in Python.
 \end{abstract}
@@ -58,7 +71,7 @@ Matrix=[
 A matrix a is generally written as $A=[a_{ij}]_{m\times n}$ where $1\leq i\leq m \land 1\leq j \leq n$. Thus, if we know the location of an element say, \emph{element in row 2 and column 1}, we can write it as $a_{21}$.
 In Python as well, if we need to find the \emph{element in row i and column j}, we can return it as:
 \begin{lstlisting}[language=Python, numbers=none]
-def find_element(matrix, row, column):
+def find_element(matrix: list[list[int|float]], row: int, column: int):
 	row_index=row-1 #we need to use row-1 as indexes begin from 0
 	column_index=column-1
 	return matrix[row_index][column_index] \end{lstlisting}
@@ -68,7 +81,7 @@ def find_element(matrix, row, column):
 \begin{explanation}
 	To print the matrix row-wise:
 	\begin{lstlisting}[language=Python, numbers=none]
-def row_wise(matrix):
+def row_wise(matrix: list[list[int|float]]):
 	for i in range(len(matrix)):
 		for j in range(len(matrix[0])):
 			print(matrix[i][j],end="\t")
@@ -84,7 +97,7 @@ def row_wise(matrix):
 	\end{verbatim}
 	To print the matrix column-wise:
 	\begin{lstlisting}[language=Python, numbers=none]
-def column_wise(matrix):
+def column_wise(matrix: list[list[int|float]]):
 	for i in range(len(matrix[0])):
 		for j in range(len(matrix)):
 			print(matrix[j][i],end="\t")
@@ -107,8 +120,8 @@ Such a matrix is represented by $O$.
 \end{eg}
 \begin{explanation} \phantom \\
 	\begin{lstlisting}[language=Python, numbers=none]
-def null(rows,columns):
-	null_matrix=[[0 for i in range(columns)] for i in range(rows)] #loop over columns then over rows
+def null(rows: int,columns: int) -> list[int|float]:
+	null_matrix=[[0.0 for i in range(columns)] for i in range(rows)] #loop over columns then over rows
 	return null_matrix \end{lstlisting}
 \end{explanation}
 
@@ -137,7 +150,7 @@ Or,
 \begin{explanation}
 	First for an upper triangular matrix,
 	\begin{lstlisting}[language=Python, numbers=none]
-def upper_triangular(matrix):
+def upper_triangular(matrix: list[list[int|float]]) -> list[list[int|float]]:
     rows=len(matrix)
     columns=len(matrix[0])
     upper_matrix=null(rows,columns) #null matrix
@@ -157,7 +170,7 @@ def upper_triangular(matrix):
 	\end{verbatim}
 	Now, for a lower triangular matrix,
 	\begin{lstlisting}[language=Python, numbers=none]
-def lower_triangular(matrix):
+def lower_triangular(matrix: list[list[int|float]]) -> list[list[int|float]]:
 	rows=len(matrix)
 	columns=len(matrix[0])
 	lower_matrix=null(rows,columns) #null matrix
@@ -181,7 +194,7 @@ The transpose of a matrix $A=[a_{ij}]_{m\times n}$ is given by,
 \end{eg}
 \begin{explanation}\phantom \\
 	\begin{lstlisting}[language=Python, numbers=none]
-def transpose(matrix):
+def transpose(matrix: list[list[int|float]]) -> list[list[int|float]]:
 	rows=len(matrix)
 	columns=len(matrix[0])
 	transpose_matrix=null(columns, rows) #null matrix
@@ -208,7 +221,7 @@ Given two matrices $A=[a_{ij}]_{n_1\times m_1}$ and $B=[b_{ij}]_{n_2\times m_2}$
 \begin{explanation}
 	It returns the sum of the matrices if it exists, else, returns -1.\\
 	\begin{lstlisting}[language=Python, numbers=none]
-def Matrix_Sum(matrix1,matrix2):
+def Matrix_Sum(matrix1: list[list[int|float]],matrix2: list[list[int|float]]) -> list[list[int|float]] | int:
     if len(matrix1)==len(matrix2) and len(matrix1[0])==len(matrix2[0]): #Checking for compatibility for addition
         rows, columns=len(matrix1), len(matrix1[0])
         sum_matrix=null(rows,columns) #null matrix
@@ -251,7 +264,7 @@ Thus, we can define the operation $A-B$ as $A+(-B)$ which is simple matrix addit
 \begin{explanation}
 	It is similar to the sum of two matrices program.
 	\begin{lstlisting}[language=Python, numbers=none]
-def Matrix_Difference(matrix1,matrix2):
+def Matrix_Difference(matrix1: list[list[int|float]],matrix2: list[list[int|float]]) -> list[list[int|float]]:
 #The program is matrix1-matrix2, since subtraction is not commutative
 matrix2_new=null(len(matrix2),len(matrix2[0]))
 for i in range(len(matrix2)):
@@ -280,7 +293,7 @@ When a matrix is divided by a scalar, each element of the matrix is reduced by a
 \begin{explanation}
 	Using the above definition,
 	\begin{lstlisting}[language=Python, numbers=none]
-def Division(mx, scalar: int):
+def Division(mx: list[list[int]], scalar: int) -> list[list[int]]:
     new_matrix = null(len(mx), len(mx[0]))
     for i in range(len(mx)):
         for j in range(len(mx[0])):
@@ -295,7 +308,7 @@ The minor matrix of an element is the matrix obtained from removing the $i^{\tex
 \begin{explanation}
 	For this, first we exclude the $i^{\text{th}}$ row. Then, we exclude the $j^{\text{th}}$ column \footnotetext{The following is an incredible one-liner.}.
 	\begin{lstlisting}[language=Python, numbers=none]
-def Minor_Matrix(mx,r,c):
+def Minor_Matrix(mx: list[list[int|float]],r; int,c: int) -> list[list[int|float]]:
     return [row[:c]+row[c+1:] for row in (mx[:r]+mx[r+1:])] \end{lstlisting}
 \end{explanation}
 \subsection{Determinant of a Matrix}
@@ -332,7 +345,7 @@ Thus, the determinant of a matrix is the sum of the elements multiplied with the
 \begin{explanation}
 	Since we have a closed form for the determinant of a $2\times 2$ matrix, we can reduce all determinants\footnote{So, we need to use recursion.} to finding the determinant of a smaller matrix by using cofactors.
 	\begin{lstlisting}[language=Python, numbers=none]
-def Determinant(mx):
+def Determinant(mx: list[list[int|float]]) -> int|float:
 	# for the base case when the matrix is 2*2
 	if len(mx) == 2:
 		return mx[0][0] * mx[1][1] - mx[0][1] * mx[1][0]
@@ -354,10 +367,10 @@ The adjoint of a square matrix $A=[a_{ij}]_{n\cross n}$ is defined as the transp
 \end{eg}
 \begin{explanation} \phantom \\
 	\begin{lstlisting}[language=Python, numbers=none]
-def Adjoint(mx):
+def Adjoint(mx: list[list[int|float]]) -> list[list[int|float]]:
     temp_matrix = []  # Empty matrix before the transpose
     for i in range(len(mx)):
-        row = []  # Initialise each row
+        row = []  # Initialize each row
         for j in range(len(mx)):
             row.append(
                 ((-1) ** (i + j)) * Determinant(Minor_Matrix(mx, i, j))
@@ -395,7 +408,7 @@ Here, we will take two approaches to find the product of two matrices.
 \begin{explanation}
 	Here, we will use the exact definition used above. We will loop 3 times.
 	\begin{lstlisting}[language=Python, numbers=none]
-def Multiplication(mx1, mx2):
+def Multiplication(mx1: list[list[int|float]], mx2: list[list[int|float]]) -> list[list[int|float]]:
     if len(mx1[0]) != len(mx2):
         return "The matrices are incompatible for multiplication."
     else:
@@ -420,7 +433,7 @@ Strassen Algorithm\footnote{named after the German mathematician Volker Strassen
 \begin{explanation}
 	\phantom \\
 	\begin{lstlisting}[language=Python, numbers=none]
-def joining_horizontally(a: list, b: list) -> list[list]:
+def joining_horizontally(a: list[list[int|float]], b: list[list[int|float]]) -> list[list[int|float]]:
 	n = len(a)
 	new_matrix = null(
 		len(a), len(a[0]) + len(b[0])
@@ -450,7 +463,7 @@ def joining_horizontally(a: list, b: list) -> list[list]:
 \begin{explanation}
 	\phantom \\
 	\begin{lstlisting}[language=Python, numbers=none]
-def joining_vertically(a: list[list], b: list[list]) -> list[list]:
+def joining_vertically(a: list[list[int|float]], b: list[list[int|float]]) -> list[list[int|float]]:
     n = len(mx1)
     new_matrix = []  # Empty list
     for i in mx1:
@@ -482,7 +495,7 @@ def joining_vertically(a: list[list], b: list[list]) -> list[list]:
 \begin{explanation}
 	We use simple list slicing to achieve the desired output.
 	\begin{lstlisting}[language=Python, numbers=none]
-def split(mx: list[list]) -> list[list]:
+def split(mx: list[list[int|float]]) -> list[list[int|float]] -> Any:
 	if len(mx) == len(mx[0]) and pow_2(len(mx)):
 		n = len(mx) // 2
 		a = mx[:n]
@@ -546,7 +559,7 @@ def split(mx: list[list]) -> list[list]:
 \begin{explanation}
 	It works on the principle of divide and conquer.
 	\begin{lstlisting}[language=Python, numbers=none]
-def strassen(mx1: list[list], mx2: list[list]) -> list[list]:
+def strassen(mx1: list[list[int|float]], mx2: list[list[int|float]]) -> list[list[int|float]]:
 	if len(mx1) == 1:
 		return [[mx1[0][0] * mx2[0][0]]]
 	a_11, a_12, a_21, a_22 = split(mx1)
@@ -674,10 +687,17 @@ We can also check the consistency of the system of linear equation by checking t
 \begin{explanation}
 	Using the above theory,
 	\begin{lstlisting}[language=Python]
-def solution(A:list[list], B:list[list])-> list[list]|int:
+def solution(A:list[list[int|float]], B:list[list[int|float]])-> list[list[int|float]]|int:
     if Determinant(A)==0:
         return 0
     else:
         return Matrix_Multiplication(Inverse(A),B)\end{lstlisting}
 \end{explanation}
+\newpage
+\section{Bibliography}
+\begin{itemize}
+	\item google.com
+	\item wikipedia.com
+	\item Computer Science with Python (Sumita Arora)
+\end{itemize}
 \end{document}
