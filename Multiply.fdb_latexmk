@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1672297485 "c:/Users/sraja/Desktop/Matrix/Multiply.tex" "Multiply.pdf" "Multiply" 1672297489
+["pdflatex"] 1672297571 "c:/Users/sraja/Desktop/Matrix/Multiply.tex" "Multiply.pdf" "Multiply" 1672297574
   "C.tex" 1663960748 2392 6bcc43d60fa1742bf70e023f5cbfe187 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1233951848 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -302,10 +302,10 @@
   "C:/Users/sraja/AppData/Roaming/MiKTeX/tex/latex/varwidth/varwidth.sty" 1238469540 10894 d359a13923460b2a73d4312d613554c8 ""
   "C:/Users/sraja/AppData/Roaming/MiKTeX/tex/latex/zref/zref-abspage.sty" 1602241898 2275 d29aca6fd67823551cb07584e3681d5d ""
   "C:/Users/sraja/AppData/Roaming/MiKTeX/tex/latex/zref/zref-base.sty" 1602241898 20688 beaddf14d96104d4bf016523be5395c5 ""
-  "Multiply.aux" 1672297489 10790 6b9a75fca8ea94e8b923f9a6186312fb "pdflatex"
-  "Multiply.tex" 1672297485 28566 41a824cfa4bda604daaad426852096d9 ""
-  "Multiply.toc" 1672297489 1700 29b12841a5aeb3b9c84c2684677a684c "pdflatex"
-  "c:/Users/sraja/Desktop/Matrix/Multiply.tex" 1672297485 28566 41a824cfa4bda604daaad426852096d9 ""
+  "Multiply.aux" 1672297574 10790 6b9a75fca8ea94e8b923f9a6186312fb "pdflatex"
+  "Multiply.tex" 1672297560 28575 0955eb358f766de09058ac830685f920 ""
+  "Multiply.toc" 1672297574 1700 29b12841a5aeb3b9c84c2684677a684c "pdflatex"
+  "c:/Users/sraja/Desktop/Matrix/Multiply.tex" 1672297560 28575 0955eb358f766de09058ac830685f920 ""
   (generated)
   "Multiply.aux"
   "Multiply.log"
