@@ -20,4 +20,9 @@
 \contentsline {subsection}{\numberline {5.2}Writing in Binary files}{9}{}%
 \contentsline {subsection}{\numberline {5.3}Reading from a Binary File}{10}{}%
 \contentsline {section}{\numberline {6}Solving System of Linear Equations}{10}{}%
-\contentsline {section}{\numberline {7}Bibliography}{11}{}%
+\contentsline {section}{\numberline {7}Hardware and Software Requirements}{11}{}%
+\contentsline {section}{\numberline {8}Input Files}{12}{}%
+\contentsline {subsection}{\numberline {8.1}Input.dat}{12}{}%
+\contentsline {subsection}{\numberline {8.2}Inputn.dat}{13}{}%
+\contentsline {section}{\numberline {9}Output}{14}{}%
+\contentsline {section}{\numberline {10}Bibliography}{17}{}%
